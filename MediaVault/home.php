@@ -1,8 +1,9 @@
 <?php
-    session_start();
-    //require "dropbox-sdk/start.php";
-    //require "dropbox-sdk/dropbox_auth.php";
-    $_SESSION["username"] = "ltrac321";
+    include "session.php";
+    if ($_SESSION['location'] == ""){
+        $_SESSION['location'] = $_SESSION["login_user"];
+    }
+
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -125,7 +126,8 @@
 </div>
 
 <script>
-    window.onload = ajaxFunction();
+    var myvar = <?php echo json_encode($_SESSION['location']); ?>;
+    window.onload = ajaxFunction(myvar);
 </script>
 
 <!--- JQUERY -->

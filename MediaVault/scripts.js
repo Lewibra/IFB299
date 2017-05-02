@@ -8,7 +8,7 @@ function side_bar_close() {
     document.getElementById("myOverlay").style.display = "none";
 }
 //Browser Support Code
-function ajaxFunction($userName){
+function ajaxFunction(location){
     var ajaxRequest;  // The variable that makes Ajax possible!
 
     try {
@@ -30,21 +30,13 @@ function ajaxFunction($userName){
     }
 
     // Create a function that will receive data
-    // sent from the server and will update
-    // div section in the same page.
-
     ajaxRequest.onreadystatechange = function(){
         if(ajaxRequest.readyState == 4){
-            //var ajaxDisplay = document.getElementById('ajaxDiv');
-            //ajaxDisplay.innerHTML = ajaxRequest.responseText;
             load_files(ajaxRequest.responseText);
         }
     }
 
-    // Now get the value from user and pass it to
-    // server script.
-
-    ajaxRequest.open("GET", "get_file_details.php", true);
+    ajaxRequest.open("GET", "get_file_details.php?currentlocation=" + location, true);
     ajaxRequest.send(null);
 }
 function load_files(response){
@@ -65,7 +57,7 @@ function load_files(response){
 
 
             var imgEle = document.createElement("img");
-                imgEle.setAttribute("src","Images/icons/pdf.png");
+                imgEle.setAttribute("src","Images/icons/" + jsonObject[i]["file_type"].toLowerCase() + ".png");
                 imgEle.setAttribute("display","inline-block");
                 imgEle.setAttribute("height","32");
                 imgEle.setAttribute("width","32");
@@ -81,9 +73,18 @@ function load_files(response){
                 childele.setAttribute("display","inline-block");
                 childele.setAttribute("width","50%");
 
+            var a = document.createElement('a');
+                var linkText = document.createTextNode("Open");
+                a.appendChild(linkText);
+                a.title = "Open";
+                a.href = "./mediavault_files/users/" + "/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"] + "." + jsonObject[i]["file_type"];
+                a.target = "_blank";
+
+
 
             ele.appendChild(imgEle);
             ele.appendChild(childele);
+            childele.appendChild(a);
 
             output.appendChild(ele);
 

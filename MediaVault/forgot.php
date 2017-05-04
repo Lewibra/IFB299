@@ -10,21 +10,22 @@
       $myusername = mysqli_real_escape_string($db,$_POST['uname']);
       $mypassword = mysqli_real_escape_string($db,$_POST['psw']); 
       
-      $sql = "SELECT id FROM users WHERE username = '$myusername' and password = '$mypassword'";
+      $sql = "SELECT id FROM users WHERE username = '$myusername'";
       $result = mysqli_query($db,$sql);
-      $row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-      $active = $row['active'];
+      $row = mysqli_fetch_row($result);
       
       $count = mysqli_num_rows($result);
       
       // If result matched $myusername and $mypassword, table row must be 1 row
     
       if($count == 1) {
+         $sql = "UPDATE users SET password='$mypassword' WHERE id='$row[0]'";
+         mysqli_query($db,$sql);
+
          $_SESSION['login_user'] = $myusername;
-         
          header("location: welcome.php");
       }else {
-         $error = "Your Login Name or Password is invalid";
+         $error = "Your Username does not exist";
       }
    }
 ?>
@@ -38,21 +39,14 @@
 		<h1>uDrop</h1>
 		<form action="" method="POST">
   			<div class="titlecontainer">
-    			<p>Login</p>
+    			<p>Reset Password</p>
   			</div>
-        	<p style="text-align: center; color: red;"><?= $error ?></p>
-  			<div class="container">
-    			<label><b>Username</b></label>
-    			<input type="text" placeholder="Username" name="uname" required>
-
-    			<label><b>Password</b></label>
-    			<input type="password" placeholder="Password" name="psw" required>
-
-    			
-    			<button id="forgot" onclick="location.href='forgot.php'" type="button">Forgot Password</button>
-    			<button id="submit" type="submit">Login</button>
+        <p style="text-align: center; color: red;"><?= $error ?></p>
+  			<div class="forgotblock">
+          <input type="text" placeholder="Your Username" name="uname" required>
+    			<input type="password" placeholder="New Password" name="psw" required>
+    			<button id="subpass" type="submit">Submit</button>
   			</div>
-  			<button id="new" onclick="location.href='signup.php'" type="button">Signup</button>
 		</form>
 	</body>
 </html>

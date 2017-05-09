@@ -17,7 +17,7 @@
 
 	<title></title>
 	<script type="text/javascript" src="scripts.js"></script>
-	<link type="text/css" rel="stylesheet" href="_/css/style.css" />
+	<link type="text/css" rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <div id="demo">

@@ -12,7 +12,7 @@
       $myusername = mysqli_real_escape_string($db,$_POST['uname']);
       $mypassword = mysqli_real_escape_string($db,$_POST['psw']); 
       
-      $sql = "SELECT id FROM users WHERE username = '$myusername'";
+      $sql = "SELECT user_name FROM user_id WHERE user_name = '$myusername'";
       $result = mysqli_query($db,$sql);
       $row = mysqli_fetch_row($result);
       
@@ -21,7 +21,7 @@
       // If result matched $myusername and $mypassword, table row must be 1 row
     
       if($count != 1) {
-         $sql = "INSERT INTO `users` VALUES (NULL, '$fname', '$lname', '$email', '$myusername', '$mypassword')";
+         $sql = "INSERT INTO `user_id` VALUES ('$myusername',  '$email', '$mypassword', '$fname', '$lname')";
          mysqli_query($db,$sql);
 
          header("location: index.php");
@@ -32,16 +32,15 @@
 ?>
 <html>
 	<head>
-		<title>uDrop</title>
-		<link rel="stylesheet" type="text/css" href="css/style.css"/>
-		<script src="js/script.js"></script>
+		<title>MediaVault</title>
+        <link rel="stylesheet" href="CSS/w3.css">
+        <link rel="stylesheet" type="text/css" href="CSS/style.css"/>
+		<script src="./js/script.js"></script>
 	</head>
 	<body>
-		<h1>uDrop</h1>
-		<form action="" method="POST">
-  			<div class="titlecontainer">
-    			<p>Signup</p>
-  			</div>
+     <div class="w3-center"><img src="Images/icons/MediaVaultlogo.png" style="width:30%;">
+        <form action="" method="POST">
+    			<h2>Signup</h2>
         <p style="text-align: center; color: red;"><?= $error ?></p>
   			<div class="forgotblock">
           <input style="width: 45%; margin-right: 2%;" type="text" placeholder="First Name" name="fname" required>
@@ -55,3 +54,5 @@
 		</form>
 	</body>
 </html>
+
+<body>

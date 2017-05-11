@@ -4,18 +4,14 @@ html, body
     width: 100%;
     margin: 0;
     padding: 0;
-    background: #7CC8FF;
 }
 
 h1
 {
-	color: #FFF;
 	text-align: center;
 	font-size: 80px;
 	padding: 0;
 	margin: 0;
-	font-family: Courier;
-	font-weight: lighter;
 }
 
 /* Bordered form */
@@ -36,16 +32,14 @@ input[type=text], input[type=password]
     box-sizing: border-box;
 }
 
-#submit
+/* Set a style for all buttons */
+button
 {
-    background-color: #149DFF;
-    color: white;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
     cursor: pointer;
     width: 40%;
-    border-radius: 25px;
     margin-left: 6%;
 }
 
@@ -62,9 +56,6 @@ button:hover
     font-size: 30px;
     margin: 0;
     margin-top: 90px;
-    font-weight: lighter;
-    font-family: Courier;
-    color: #FFF;
 }
 
 /* Add padding to containers */
@@ -72,6 +63,7 @@ button:hover
 {
     padding: 16px;
 }
+
 
 #forgot
 {

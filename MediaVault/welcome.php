@@ -10,6 +10,6 @@
    
    <body>
       <h1>Welcome <?php echo $login_session; ?></h1> 
-      <button id="logout" onclick="location.href='logout.php'" type="button">Logout</button>
+      <button onclick="location.href='logout.php'" type="button">Logout</button>
    </body>  
 </html>

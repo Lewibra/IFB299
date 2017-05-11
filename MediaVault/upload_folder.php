@@ -23,8 +23,8 @@ if($_POST['action'] == 'call_this') {
             $file_id = 0;
         }
         //Register the new folder into the SQL database
-        $sql = "INSERT INTO `file_details` (`user_name`, `file_id`, `file_name`, `file_type`)
-                VALUES ('".$_SESSION['username']."', '".$file_id."','".$_POST['folderName']."','folder')";
+        $sql = "INSERT INTO `file_details` (`user_name`, `file_id`, `file_name`, `file_type`, `file_location`, `location_inside`)
+                VALUES ('".$_SESSION['login_user']."', '".$file_id."','".$_POST['folderName']."','folder', '".$_SESSION['location']."', '".$_SESSION['location']."/".$_POST['folderName']."')";
 
         if ($conn->query($sql) === FALSE) {
             echo "Error: " . $sql . "<br>" . $conn->error;

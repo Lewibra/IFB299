@@ -1,0 +1,14 @@
+Didn't look like there was an option to add a folder
+
+No drag and drop file upload functionality
+
+No preview file option
+
+No searching option
+
+Couldn't see a signup page
+
+Downloading files worked
+
+File icons did not reflect the file type
+

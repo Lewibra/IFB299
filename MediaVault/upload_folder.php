@@ -4,8 +4,8 @@ session_start();
 session_id($_GET['sess']);
 header("Content-Type: application/json", true);
 if($_POST['action'] == 'call_this') {
-    if (!file_exists('./mediavault_files/users/ltrac321/' . $_POST['folderName'])) {
-        mkdir('./mediavault_files/users/ltrac321/' . $_POST['folderName'] , 0777, true);
+    if (!file_exists('./mediavault_files/users/'.$_SESSION['login_user'].'/' . $_POST['folderName'])) {
+        mkdir('./mediavault_files/users/'.$_SESSION['login_user'].'/' . $_POST['folderName'] , 0777, true);
         // Register the folder into SQL
         $conn = new mysqli($servername, $username, $password, $dbname);
         // Check connection

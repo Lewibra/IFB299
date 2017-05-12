@@ -401,3 +401,67 @@ $(document).ready(function() {
         'width': (width + 'px')
     });
 });
+
+function update_email(){
+    var email = prompt("Type new email address:");
+    if (email == null || email == "") {
+        alert("Invalid email address")
+    }else{
+        $.ajax({
+            url: "update_email.php",
+            type: "POST",
+            dataType:'json',
+            data:{action:'call_this', folderName: email.toString()},
+            success:function() {
+            }
+        });
+    }
+}
+
+function update_firstName(){
+    var first = prompt("Type in your first name:");
+    if (first == null || first == "") {
+        alert("Invalid name")
+    }else{
+        $.ajax({
+            url: "update_firstName.php",
+            type: "POST",
+            dataType:'json',
+            data:{action:'call_this', folderName: first.toString()},
+            success:function() {
+            }
+        });
+    }
+}
+
+function update_lastName(){
+    var last = prompt("Type in your last name:");
+    if (last == null || last == "") {
+        alert("Invalid name")
+    }else{
+        $.ajax({
+            url: "update_lastName.php",
+            type: "POST",
+            dataType:'json',
+            data:{action:'call_this', folderName: last.toString()},
+            success:function() {
+            }
+        });
+    }
+}
+
+function change_password(){
+    var pass = prompt("Type in your new password:");
+    if (pass == null || pass == "") {
+        alert("Invalid password")
+    }else{
+        $.ajax({
+            url: "change_password.php",
+            type: "POST",
+            dataType:'json',
+            data:{action:'call_this', folderName: pass.toString()},
+            success:function() {
+            }
+        });
+    }
+}

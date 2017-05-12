@@ -4,9 +4,9 @@
     if ($_SESSION['location'] == ""){
         $_SESSION['location'] = $_SESSION["login_user"];
     }
-    
+
     $result = mysql_query("SELECT * FROM user_id ");
-    
+
     while($row = mysql_fetch_assoc($result)){
 ?>
 <!DOCTYPE html>
@@ -16,7 +16,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 	<title></title>
-	<script type="text/javascript" src="scripts.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
 	<link type="text/css" rel="stylesheet" href="CSS/style.css" />
 </head>
 <body>
@@ -72,8 +72,8 @@
             <a href="#" onclick="change_password()" target="_blank">Change Password</a>
           </td>
         </tr>
-        <?php 
-        	} 
+        <?php
+        	}
         ?>
       </tbody>
     </table>

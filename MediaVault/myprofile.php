@@ -5,7 +5,7 @@
         $_SESSION['location'] = $_SESSION["login_user"];
     }
 
-	$result = "SELECT * FROM user_id WHERE user_name = '" . $_SESSION["login_user"];
+	$result = "SELECT * FROM user_id WHERE user_name = '" . $_SESSION["login_user"]."'";
 
     while($row = mysql_fetch_assoc($result)){
 ?>

@@ -5,7 +5,7 @@
         $_SESSION['location'] = $_SESSION["login_user"];
     }
 
-    $result = mysql_query("SELECT * FROM user_id ");
+	$result = "SELECT * FROM user_id WHERE user_name = '" . $_SESSION["login_user"]."'";
 
     while($row = mysql_fetch_assoc($result)){
 ?>
@@ -61,6 +61,7 @@
           <td id="lastName" data-title="">
           	<?php
 					echo $row['last_name'];
+    					}
 			?>
           </td>
           <td data-title="Edit">
@@ -72,9 +73,6 @@
             <a href="#" onclick="change_password()" target="_blank">Change Password</a>
           </td>
         </tr>
-        <?php
-        	}
-        ?>
       </tbody>
     </table>
   </div>

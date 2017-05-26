@@ -1,4 +1,4 @@
-
+//
 
 // Script to open and close sidebar
 function side_bar_open() {

@@ -74,7 +74,7 @@ function load_files(response, location){
     }
     else if(sortByDate == true)
     {
-        jsonObject.sort(sortBy("file_data"));
+        jsonObject.sort(sortBy("creation_date"));
     }
     
 

@@ -1,4 +1,4 @@
-
+//
 
 // Script to open and close sidebar
 function side_bar_open() {
@@ -116,13 +116,22 @@ function load_files(response, location){
                 };
                 a.href = "#";
             }if (jsonObject[i]["file_type"] != "folder"){
+                if (jsonObject[i]["file_type"] == "epub"){
+                var a = document.createTextNode("Open");
+                var linkText = document.createTextNode("Open");
+                a.appendChild(linkText);
+                a.title = "Open";
+                var path = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
+				a.href = "./reader.php" + "?path=" + 'path';
+                a.target = "_blank";
+                }else{
                 var a = document.createElement('a');
                 var linkText = document.createTextNode("Open");
                 a.appendChild(linkText);
                 a.title = "Open";
                 a.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
                 a.target = "_blank";
-
+                }
                 var download = document.createElement('a');
                 var linkText = document.createTextNode(" Download");
                 download.appendChild(linkText);
@@ -238,12 +247,22 @@ function after_load_load_files(response){
                 };
                 a.href = "#";
             }else{
+                if (jsonObject[i]["file_type"] == "epub"){
+                var a = document.createTextNode("Open");
+                var linkText = document.createTextNode("Open");
+                a.appendChild(linkText);
+                a.title = "Open";
+                var path = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
+				a.href = "./reader.php" + "?path=" + 'path';
+                a.target = "_blank";
+                }else{
                 var a = document.createElement('a');
                 var linkText = document.createTextNode("Open");
                 a.appendChild(linkText);
                 a.title = "Open";
                 a.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
                 a.target = "_blank";
+                }
             }
 
             ele.appendChild(imgEle);
@@ -346,13 +365,22 @@ function load_searched_files(response){
                 };
                 a.href = "#";
             }else{
+                if (jsonObject[i]["file_type"] == "epub"){
+                var a = document.createTextNode("Open");
+                var linkText = document.createTextNode("Open");
+                a.appendChild(linkText);
+                a.title = "Open";
+                var path = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
+				a.href = "./reader.php" + "?path=" + 'path';
+                a.target = "_blank";
+                }else{
                 var a = document.createElement('a');
                 var linkText = document.createTextNode("Open");
                 a.appendChild(linkText);
                 a.title = "Open";
                 a.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
                 a.target = "_blank";
-
+                }
                 var download = document.createElement('a');
                 var linkText = document.createTextNode(" Download");
                 download.appendChild(linkText);

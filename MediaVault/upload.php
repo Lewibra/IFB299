@@ -41,7 +41,7 @@ if(!empty($_FILES)){
             $file_id = 0;
         }
         //Register the new folder into the SQL database
-        $sql = "INSERT INTO `file_details` (`user_name`, `file_id`, `file_name`, `file_type`, `file_location`, `location_inside`)
+        $sql = "INSERT INTO `Media_Vault_Schema`.`file_details` (`user_name`, `file_id`, `file_name`, `file_type`, `file_location`, `location_inside`)
                 VALUES ('".$_SESSION['login_user']."', '".$file_id."','".$newName."','".$fileType."', '".$_SESSION['location']."', '".$_SESSION['location']."/".$newName."')";
 
         if ($conn->query($sql) === FALSE) {

@@ -10,8 +10,7 @@
 
         //Delete the File
         $sql = "DELETE FROM file_details 
-                    WHERE user_name = '" . $_SESSION['login_user'] . "'AND file_id ='" . $_GET["fileId"] .
-                    "'AND location_inside='" . $_SESSION['login_user'].'/'.$_GET['file']."'";
+                    WHERE user_name = '" . $_SESSION['login_user'] . "'AND file_id ='" . $_GET["fileId"]. "'";
 
         if ($conn->query($sql) === FALSE) {
             echo "Error: " . $sql . "<br>" . $conn->error;

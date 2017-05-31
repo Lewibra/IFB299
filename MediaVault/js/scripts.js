@@ -9,6 +9,21 @@ function side_bar_close() {
     document.getElementById("mySidebar").style.display = "none";
     document.getElementById("myOverlay").style.display = "none";
 }
+
+function sortBy(prop)
+{
+    return function(a,b)
+    {
+        if( a[prop] > b[prop])
+        {
+            return 1;
+        }else if( a[prop] < b[prop] )
+        {
+            return -1;
+        }
+        return 0;
+    }
+}
 //Browser Support Code
 function ajaxFunction(location, insideLocation){
     var ajaxRequest;  // The variable that makes Ajax possible!
@@ -52,30 +67,33 @@ function load_files(response, location){
     var output = document.getElementById('filepanel');
     var i=0;
     var val="";
+
     while(i<=Object.keys(jsonObject).length)
     {
         if(!document.getElementById('timedrpact'+i))
         {
             var ele = document.createElement("div");
-                ele.setAttribute("id","timedrpact"+i);
-                ele.setAttribute("class","w3-third w3-container w3-margin-bottom w3-hover-opacity");
+            ele.setAttribute("id","timedrpact"+i);
+            ele.setAttribute("class","w3-third w3-container w3-margin-bottom w3-hover-opacity");
 
             var imgEle = document.createElement("img");
-                imgEle.setAttribute("src","Images/icons/" + jsonObject[i]["file_type"].toLowerCase() + ".png");
-                imgEle.setAttribute("display","inline-block");
-                imgEle.setAttribute("height","32");
-                imgEle.setAttribute("width","32");
-                imgEle.setAttribute("align","right");
-                imgEle.setAttribute("vertical-align","middle");
+            imgEle.setAttribute("src","Images/icons/" + jsonObject[i]["file_type"].toLowerCase() + ".png");
+            imgEle.setAttribute("display","inline-block");
+            imgEle.setAttribute("height","32");
+            imgEle.setAttribute("width","32");
+            imgEle.setAttribute("align","right");
+            imgEle.setAttribute("vertical-align","middle");
 
             var childele = document.createElement("div");
-                childele.setAttribute("id","childele"+i);
-                childele.setAttribute("class","w3-container w3-white");
-                childele.innerHTML= jsonObject[i]["file_name"] + "<br>" + "<br>";
-                childele.setAttribute("align","left");
-                childele.setAttribute("float","left");
-                childele.setAttribute("display","inline-block");
-                childele.setAttribute("width","50%");
+            childele.setAttribute("id","childele"+i);
+            childele.setAttribute("class","w3-container w3-white");
+            childele.innerHTML= jsonObject[i]["file_name"] + "<br>" + "<br>";
+            childele.setAttribute("align","left");
+            childele.setAttribute("float","left");
+            childele.setAttribute("display","inline-block");
+            childele.setAttribute("width","50%");
+
+
 
             var fileLocation  = jsonObject[i]["location_inside"].toString();
 
@@ -90,12 +108,22 @@ function load_files(response, location){
                 };
                 a.href = "#";
             }if (jsonObject[i]["file_type"] != "folder"){
-                var a = document.createElement('a');
-                var linkText = document.createTextNode("Open");
-                a.appendChild(linkText);
-                a.title = "Open";
-                a.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
-                a.target = "_blank";
+                if (jsonObject[i]["file_type"] == "epub"){
+                    var a = document.createTextNode("Open");
+                    var linkText = document.createTextNode("Open");
+                    a.appendChild(linkText);
+                    a.title = "Open";
+                    var path = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
+                    a.href = "./reader.php" + "?path=" + 'path';
+                    a.target = "_blank";
+                }else {
+                    var a = document.createElement('a');
+                    var linkText = document.createTextNode("Open");
+                    a.appendChild(linkText);
+                    a.title = "Open";
+                    a.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
+                    a.target = "_blank";
+                }
 
                 var download = document.createElement('a');
                 var linkText = document.createTextNode(" Download");
@@ -111,15 +139,19 @@ function load_files(response, location){
                 delete_button.appendChild(linkText);
                 delete_button.title = " Delete";
                 delete_button.setAttribute("padding","0px 10px");
-                delete_button .setAttribute("display","inline-block");
+                delete_button.setAttribute("display","inline-block");
+                delete_button.setAttribute("id", file_id);
 
-                delete_button.onclick = function () {
-                    delete_file(fileName, file_id);
-                    return false;
-                }
+                delete_button.onclick = (function(fileName, file_id){
+                    return function(){
+                        delete_file(fileName, file_id);
+                        return false;
+                    }
+                })(fileName,file_id);
+
                 delete_button.href = "#";
 
-            }
+        }
             ele.appendChild(imgEle);
             ele.appendChild(childele);
             childele.appendChild(a);

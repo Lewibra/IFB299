@@ -195,6 +195,21 @@ function after_load_ajaxFunction(locationInside){
     ajaxRequest.send(null);
 }
 
+function sortBy(prop)
+{
+    return function(a,b)
+    {
+        if( a[prop] > b[prop])
+        {
+            return 1;
+        }else if( a[prop] < b[prop] )
+        {
+            return -1;
+        }
+    return 0;
+    }
+}
+
 function after_load_load_files(response){
 
     var jsonObject = JSON.parse(response);
@@ -206,6 +221,16 @@ function after_load_load_files(response){
     }
     var i=0;
     var val="";
+
+    if(sortByName == true)
+    {
+        jsonObject.sort(sortBy("file_name"));
+    }
+    else if(sortByDate == true)
+    {
+        jsonObject.sort(sortBy("creation_date"));
+    }
+
     while(i<=Object.keys(jsonObject).length)
     {
 

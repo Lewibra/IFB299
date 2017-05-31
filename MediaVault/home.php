@@ -64,6 +64,7 @@
                     <input id="search" class = "w3-input" type="text" placeholder="Search..">
                 </form>
 
+                <button onclick="after_load_ajaxFunction('',true)" class="w3-margin-left w3-button w3-white"><i class="fa fa-folder w3-margin-right w3-text-blue-gray"></i>Clear Results</button>
                 <button onclick="create_folder()" class="w3-margin-left w3-button w3-white"><i class="fa fa-folder w3-margin-right w3-text-blue-gray"></i>Add Folder</button>
             </div>
         </div>

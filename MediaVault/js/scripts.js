@@ -25,7 +25,7 @@ function sortBy(prop)
     }
 }
 //Browser Support Code
-function ajaxFunction(location, insideLocation){
+function ajaxFunction(location, clearResults){
     var ajaxRequest;  // The variable that makes Ajax possible!
     try {
         // Opera 8.0+, Firefox, Safari
@@ -52,7 +52,11 @@ function ajaxFunction(location, insideLocation){
         }
     }
 
-    ajaxRequest.open("GET", "get_file_details.php?currentlocation=" + location, true);
+    if (clearResults == true){
+        ajaxRequest.open("GET", "clear_search_results.php", true);
+    }else{
+        ajaxRequest.open("GET", "get_file_details.php?currentlocation=" + location, true);
+    }
     ajaxRequest.send(null);
 
     var offsetHeight = document.getElementById('filepanel').offsetWidth;
@@ -163,7 +167,8 @@ function load_files(response, location){
     }
 }
 
-function after_load_ajaxFunction(locationInside){
+function after_load_ajaxFunction(locationInside, clearResults){
+    var results = clearResults;
     var ajaxRequest;  // The variable that makes Ajax possible!
     try {
         // Opera 8.0+, Firefox, Safari
@@ -191,7 +196,11 @@ function after_load_ajaxFunction(locationInside){
         }
     }
 
-    ajaxRequest.open("GET", "get_file_details.php?locationInside=" + locationInside, true);
+    if (results){
+        ajaxRequest.open("GET", "clear_search_results.php", true);
+    }else{
+        ajaxRequest.open("GET", "get_file_details.php?locationInside=" + locationInside, true);
+    }
     ajaxRequest.send(null);
 }
 

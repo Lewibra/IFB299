@@ -26,47 +26,7 @@ function sortBy(prop)
 }
 
 
-//Search files
-function open_folder(locationInside){
-    var search_term = locationInside;
-    var ajaxRequest;  // The variable that makes Ajax possible!
-    try {
-        // Opera 8.0+, Firefox, Safari
-        ajaxRequest = new XMLHttpRequest();
-    }catch (e) {
-        // Internet Explorer Browsers
-        try {
-            ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
-        }catch (e) {
-            try{
-                ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
-            }catch (e){
-                // Something went wrong
-                alert("Your browser broke!");
-                return false;
-            }
-        }
-    }
-
-    // Create a function that will receive data
-    ajaxRequest.onreadystatechange = function(){
-        if(ajaxRequest.readyState == 4){
-            load_folder(ajaxRequest.responseText);
-            return false;
-        }
-    }
-
-    ajaxRequest.open("GET", "open_folder.php?search_terms=" + search_term, true);
-    ajaxRequest.send(null);
-
-    var offsetHeight = document.getElementById('filepanel').offsetWidth;
-    document.getElementById('upload_div').style.width = offsetHeight+'px';
-    document.getElementById('upload_box').style.width = offsetHeight+'px';
-
-    return false;
-}
-
-function load_folder(response){
+function load_files(response, location){
 
     var jsonObject = JSON.parse(response);
 
@@ -76,6 +36,17 @@ function load_folder(response){
     while (output.hasChildNodes()) {
         output.removeChild(output.lastChild);
     }
+
+    /*if(sortByName == true)
+    {
+        jsonObject.sort(sortBy("file_name"));
+    }
+    else if(sortByDate == true)
+    {
+        jsonObject.sort(sortBy("creation_date"));
+    }
+    */
+
     while(i<=Object.keys(jsonObject).length)
     {
         if(!document.getElementById('timedrpact'+i))
@@ -101,58 +72,95 @@ function load_folder(response){
             childele.setAttribute("display","inline-block");
             childele.setAttribute("width","50%");
 
-            var fileLocation  = jsonObject[i]["location_inside"].toString();
 
             if (jsonObject[i]["file_type"] == "folder"){
                 var a = document.createElement('a');
                 var linkText = document.createTextNode("Open");
                 a.appendChild(linkText);
                 a.title = "Open";
+                var locationInside = jsonObject[i]["location_inside"].toString();
                 a.onclick = function(){
-                    after_load_ajaxFunction(fileLocation);
+                    open_folder(locationInside);
                     return false;
                 };
                 a.href = "#";
-            }else{
-                var a = document.createElement('a');
-                var linkText = document.createTextNode("Open");
-                a.appendChild(linkText);
-                a.title = "Open";
-                a.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
-                a.target = "_blank";
+            }if (jsonObject[i]["file_type"] != "folder"){
+            var a = document.createElement('a');
+            var linkText = document.createTextNode("Open");
+            a.appendChild(linkText);
+            a.title = "Open";
+            a.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
+            a.target = "_blank";
 
-                var download = document.createElement('a');
-                var linkText = document.createTextNode(" Download");
-                download.appendChild(linkText);
-                download.title = " Download";
-                download.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
-                download.download = jsonObject[i]["file_name"];
+            var download = document.createElement('a');
+            var linkText = document.createTextNode(" Download");
+            download.appendChild(linkText);
+            download.title = " Download";
+            download.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
+            download.download = jsonObject[i]["file_name"];
 
-                var delete_button = document.createElement('a');
-                var linkText = document.createTextNode(" Delete");
-                var fileName = jsonObject[i]["file_name"];
-                var file_id = jsonObject[i]["file_id"];
-                delete_button.appendChild(linkText);
-                delete_button.title = " Delete";
-                delete_button.setAttribute("padding","0px 10px");
-                delete_button .setAttribute("display","inline-block");
+            var delete_button = document.createElement('a');
+            var linkText = document.createTextNode(" Delete");
+            var fileName = jsonObject[i]["file_name"];
+            var file_id = jsonObject[i]["file_id"];
+            delete_button.appendChild(linkText);
+            delete_button.title = " Delete";
+            delete_button.setAttribute("padding","0px 10px");
+            delete_button .setAttribute("display","inline-block");
 
-                delete_button.onclick = function () {
-                    delete_file(fileName, file_id);
-                    return false;
-                }
-                delete_button.href = "#";
-
+            delete_button.onclick = function () {
+                delete_file(fileName, file_id);
+                return false;
             }
+            delete_button.href = "#";
+            childele.appendChild(download);
+        }
             ele.appendChild(imgEle);
             ele.appendChild(childele);
             childele.appendChild(a);
             childele.appendChild(delete_button);
-            childele.appendChild(download);
             output.appendChild(ele);
         }
         i++;
     }
+}
+
+//Search files
+function open_folder(locationInside){
+    var search_term = locationInside;
+    var ajaxRequest;  // The variable that makes Ajax possible!
+    try {
+        // Opera 8.0+, Firefox, Safari
+        ajaxRequest = new XMLHttpRequest();
+    }catch (e) {
+        // Internet Explorer Browsers
+        try {
+            ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+        }catch (e) {
+            try{
+                ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+            }catch (e){
+                // Something went wrong
+                alert("Your browser broke!");
+                return false;
+            }
+        }
+    }
+
+    // Create a function that will receive data
+    ajaxRequest.onreadystatechange = function(){
+        if(ajaxRequest.readyState == 4){
+            load_files(ajaxRequest.responseText);
+            return false;
+        }
+    }
+
+    ajaxRequest.open("GET", "open_folder.php?search_terms=" + search_term, true);
+    ajaxRequest.send(null);
+
+    var offsetHeight = document.getElementById('filepanel').offsetWidth;
+    document.getElementById('upload_div').style.width = offsetHeight+'px';
+    document.getElementById('upload_box').style.width = offsetHeight+'px';
 
     return false;
 }
@@ -197,260 +205,6 @@ function ajaxFunction(location, clearResults){
     document.getElementById('upload_box').style.width = offsetHeight+'px';
 }
 
-<<<<<<< HEAD
-function load_files(response, location){
-=======
-function sortBy(prop)
-{
-    return function(a,b)
-    {
-        if( a[prop] > b[prop])
-        {
-            return 1;
-        }else if( a[prop] < b[prop] )
-        {
-            return -1;
-        }
-    return 0;
-    }
-}
-
-function after_load_load_files(response){
->>>>>>> origin/master
-
-    var jsonObject = JSON.parse(response);
-
-    var output = document.getElementById('filepanel');
-    var i=0;
-    var val="";
-    while (output.hasChildNodes()) {
-        output.removeChild(output.lastChild);
-    }
-<<<<<<< HEAD
-=======
-    var i=0;
-    var val="";
-
-    if(sortByName == true)
-    {
-        jsonObject.sort(sortBy("file_name"));
-    }
-    else if(sortByDate == true)
-    {
-        jsonObject.sort(sortBy("creation_date"));
-    }
-
->>>>>>> origin/master
-    while(i<=Object.keys(jsonObject).length)
-    {
-        if(!document.getElementById('timedrpact'+i))
-        {
-            var ele = document.createElement("div");
-            ele.setAttribute("id","timedrpact"+i);
-            ele.setAttribute("class","w3-third w3-container w3-margin-bottom w3-hover-opacity");
-
-            var imgEle = document.createElement("img");
-            imgEle.setAttribute("src","Images/icons/" + jsonObject[i]["file_type"].toLowerCase() + ".png");
-            imgEle.setAttribute("display","inline-block");
-            imgEle.setAttribute("height","32");
-            imgEle.setAttribute("width","32");
-            imgEle.setAttribute("align","right");
-            imgEle.setAttribute("vertical-align","middle");
-
-            var childele = document.createElement("div");
-            childele.setAttribute("id","childele"+i);
-            childele.setAttribute("class","w3-container w3-white");
-            childele.innerHTML= jsonObject[i]["file_name"] + "<br>" + "<br>";
-            childele.setAttribute("align","left");
-            childele.setAttribute("float","left");
-            childele.setAttribute("display","inline-block");
-            childele.setAttribute("width","50%");
-
-
-            if (jsonObject[i]["file_type"] == "folder"){
-                var a = document.createElement('a');
-                var linkText = document.createTextNode("Open");
-                a.appendChild(linkText);
-                a.title = "Open";
-                var locationInside = jsonObject[i]["location_inside"].toString();
-                a.onclick = function(){
-                    open_folder(locationInside);
-                    return false;
-                };
-                a.href = "#";
-            }if (jsonObject[i]["file_type"] != "folder"){
-            var a = document.createElement('a');
-            var linkText = document.createTextNode("Open");
-            a.appendChild(linkText);
-            a.title = "Open";
-            a.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
-            a.target = "_blank";
-
-            var download = document.createElement('a');
-            var linkText = document.createTextNode(" Download");
-            download.appendChild(linkText);
-            download.title = " Download";
-            download.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
-            download.download = jsonObject[i]["file_name"];
-
-            var delete_button = document.createElement('a');
-            var linkText = document.createTextNode(" Delete");
-            var fileName = jsonObject[i]["file_name"];
-            var file_id = jsonObject[i]["file_id"];
-            delete_button.appendChild(linkText);
-            delete_button.title = " Delete";
-            delete_button.setAttribute("padding","0px 10px");
-            delete_button .setAttribute("display","inline-block");
-
-            delete_button.onclick = function () {
-                delete_file(fileName, file_id);
-                return false;
-            }
-            delete_button.href = "#";
-            childele.appendChild(download);
-        }
-            ele.appendChild(imgEle);
-            ele.appendChild(childele);
-            childele.appendChild(a);
-            childele.appendChild(delete_button);
-            output.appendChild(ele);
-        }
-        i++;
-    }
-}
-
-
-//Search files
-function open_folder(locationInside){
-    var search_term = locationInside;
-    var ajaxRequest;  // The variable that makes Ajax possible!
-    try {
-        // Opera 8.0+, Firefox, Safari
-        ajaxRequest = new XMLHttpRequest();
-    }catch (e) {
-        // Internet Explorer Browsers
-        try {
-            ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
-        }catch (e) {
-            try{
-                ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
-            }catch (e){
-                // Something went wrong
-                alert("Your browser broke!");
-                return false;
-            }
-        }
-    }
-
-    // Create a function that will receive data
-    ajaxRequest.onreadystatechange = function(){
-        if(ajaxRequest.readyState == 4){
-            load_folder(ajaxRequest.responseText);
-            return false;
-        }
-    }
-
-    ajaxRequest.open("GET", "open_folder.php?search_terms=" + search_term, true);
-    ajaxRequest.send(null);
-
-    var offsetHeight = document.getElementById('filepanel').offsetWidth;
-    document.getElementById('upload_div').style.width = offsetHeight+'px';
-    document.getElementById('upload_box').style.width = offsetHeight+'px';
-
-    return false;
-}
-
-function load_folder(response){
-
-    var jsonObject = JSON.parse(response);
-
-    var output = document.getElementById('filepanel');
-    var i=0;
-    var val="";
-    while (output.hasChildNodes()) {
-        output.removeChild(output.lastChild);
-    }
-    while(i<=Object.keys(jsonObject).length)
-    {
-        if(!document.getElementById('timedrpact'+i))
-        {
-            var ele = document.createElement("div");
-            ele.setAttribute("id","timedrpact"+i);
-            ele.setAttribute("class","w3-third w3-container w3-margin-bottom w3-hover-opacity");
-
-            var imgEle = document.createElement("img");
-            imgEle.setAttribute("src","Images/icons/" + jsonObject[i]["file_type"].toLowerCase() + ".png");
-            imgEle.setAttribute("display","inline-block");
-            imgEle.setAttribute("height","32");
-            imgEle.setAttribute("width","32");
-            imgEle.setAttribute("align","right");
-            imgEle.setAttribute("vertical-align","middle");
-
-            var childele = document.createElement("div");
-            childele.setAttribute("id","childele"+i);
-            childele.setAttribute("class","w3-container w3-white");
-            childele.innerHTML= jsonObject[i]["file_name"] + "<br>" + "<br>";
-            childele.setAttribute("align","left");
-            childele.setAttribute("float","left");
-            childele.setAttribute("display","inline-block");
-            childele.setAttribute("width","50%");
-
-            var fileLocation  = jsonObject[i]["location_inside"].toString();
-
-            if (jsonObject[i]["file_type"] == "folder"){
-                var a = document.createElement('a');
-                var linkText = document.createTextNode("Open");
-                a.appendChild(linkText);
-                a.title = "Open";
-                a.onclick = function(){
-                    after_load_ajaxFunction(fileLocation);
-                    return false;
-                };
-                a.href = "#";
-            }else{
-                var a = document.createElement('a');
-                var linkText = document.createTextNode("Open");
-                a.appendChild(linkText);
-                a.title = "Open";
-                a.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
-                a.target = "_blank";
-
-                var download = document.createElement('a');
-                var linkText = document.createTextNode(" Download");
-                download.appendChild(linkText);
-                download.title = " Download";
-                download.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
-                download.download = jsonObject[i]["file_name"];
-
-                var delete_button = document.createElement('a');
-                var linkText = document.createTextNode(" Delete");
-                var fileName = jsonObject[i]["file_name"];
-                var file_id = jsonObject[i]["file_id"];
-                delete_button.appendChild(linkText);
-                delete_button.title = " Delete";
-                delete_button.setAttribute("padding","0px 10px");
-                delete_button .setAttribute("display","inline-block");
-
-                delete_button.onclick = function () {
-                    delete_file(fileName, file_id);
-                    return false;
-                }
-                delete_button.href = "#";
-
-            }
-            ele.appendChild(imgEle);
-            ele.appendChild(childele);
-            childele.appendChild(a);
-            childele.appendChild(delete_button);
-            childele.appendChild(download);
-            output.appendChild(ele);
-        }
-        i++;
-    }
-
-    return false;
-}
-
 function after_load_ajaxFunction(locationInside, clearResults){
     var results = clearResults;
     var ajaxRequest;  // The variable that makes Ajax possible!
@@ -475,7 +229,7 @@ function after_load_ajaxFunction(locationInside, clearResults){
     // Create a function that will receive data
     ajaxRequest.onreadystatechange = function(){
         if(ajaxRequest.readyState == 4){
-            after_load_load_files(ajaxRequest.responseText);
+            load_files(ajaxRequest.responseText);
 
         }
     }
@@ -486,94 +240,6 @@ function after_load_ajaxFunction(locationInside, clearResults){
         ajaxRequest.open("GET", "get_file_details.php?locationInside=" + locationInside, true);
     }
     ajaxRequest.send(null);
-}
-
-function after_load_load_files(response){
-
-    var jsonObject = JSON.parse(response);
-
-    var output = document.getElementById('filepanel');
-    var i=0;
-    var val="";
-    while (output.hasChildNodes()) {
-        output.removeChild(output.lastChild);
-    }
-    while(i<=Object.keys(jsonObject).length)
-    {
-        if(!document.getElementById('timedrpact'+i))
-        {
-            var ele = document.createElement("div");
-            ele.setAttribute("id","timedrpact"+i);
-            ele.setAttribute("class","w3-third w3-container w3-margin-bottom w3-hover-opacity");
-
-            var imgEle = document.createElement("img");
-            imgEle.setAttribute("src","Images/icons/" + jsonObject[i]["file_type"].toLowerCase() + ".png");
-            imgEle.setAttribute("display","inline-block");
-            imgEle.setAttribute("height","32");
-            imgEle.setAttribute("width","32");
-            imgEle.setAttribute("align","right");
-            imgEle.setAttribute("vertical-align","middle");
-
-            var childele = document.createElement("div");
-            childele.setAttribute("id","childele"+i);
-            childele.setAttribute("class","w3-container w3-white");
-            childele.innerHTML= jsonObject[i]["file_name"] + "<br>" + "<br>";
-            childele.setAttribute("align","left");
-            childele.setAttribute("float","left");
-            childele.setAttribute("display","inline-block");
-            childele.setAttribute("width","50%");
-
-
-            if (jsonObject[i]["file_type"] == "folder"){
-                var a = document.createElement('a');
-                var linkText = document.createTextNode("Open");
-                a.appendChild(linkText);
-                a.title = "Open";
-                var locationInside = jsonObject[i]["location_inside"].toString();
-                a.onclick = function(){
-                    open_folder(locationInside);
-                    return false;
-                };
-                a.href = "#";
-            }if (jsonObject[i]["file_type"] != "folder"){
-            var a = document.createElement('a');
-            var linkText = document.createTextNode("Open");
-            a.appendChild(linkText);
-            a.title = "Open";
-            a.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
-            a.target = "_blank";
-
-            var download = document.createElement('a');
-            var linkText = document.createTextNode(" Download");
-            download.appendChild(linkText);
-            download.title = " Download";
-            download.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
-            download.download = jsonObject[i]["file_name"];
-
-            var delete_button = document.createElement('a');
-            var linkText = document.createTextNode(" Delete");
-            var fileName = jsonObject[i]["file_name"];
-            var file_id = jsonObject[i]["file_id"];
-            delete_button.appendChild(linkText);
-            delete_button.title = " Delete";
-            delete_button.setAttribute("padding","0px 10px");
-            delete_button .setAttribute("display","inline-block");
-
-            delete_button.onclick = function () {
-                delete_file(fileName, file_id);
-                return false;
-            }
-            delete_button.href = "#";
-            childele.appendChild(download);
-        }
-            ele.appendChild(imgEle);
-            ele.appendChild(childele);
-            childele.appendChild(a);
-            childele.appendChild(delete_button);
-            output.appendChild(ele);
-        }
-        i++;
-    }
 }
 
 //Search files
@@ -601,7 +267,7 @@ function search_files(){
     // Create a function that will receive data
     ajaxRequest.onreadystatechange = function(){
         if(ajaxRequest.readyState == 4){
-            load_searched_files(ajaxRequest.responseText);
+            load_files(ajaxRequest.responseText);
             return false;
         }
     }
@@ -615,95 +281,6 @@ function search_files(){
 
     return false;
 }
-
-function load_searched_files(response){
-
-    var jsonObject = JSON.parse(response);
-
-    var output = document.getElementById('filepanel');
-    var i=0;
-    var val="";
-    while (output.hasChildNodes()) {
-        output.removeChild(output.lastChild);
-    }
-    while(i<=Object.keys(jsonObject).length)
-    {
-        if(!document.getElementById('timedrpact'+i))
-        {
-            var ele = document.createElement("div");
-            ele.setAttribute("id","timedrpact"+i);
-            ele.setAttribute("class","w3-third w3-container w3-margin-bottom w3-hover-opacity");
-
-            var imgEle = document.createElement("img");
-            imgEle.setAttribute("src","Images/icons/" + jsonObject[i]["file_type"].toLowerCase() + ".png");
-            imgEle.setAttribute("display","inline-block");
-            imgEle.setAttribute("height","32");
-            imgEle.setAttribute("width","32");
-            imgEle.setAttribute("align","right");
-            imgEle.setAttribute("vertical-align","middle");
-
-            var childele = document.createElement("div");
-            childele.setAttribute("id","childele"+i);
-            childele.setAttribute("class","w3-container w3-white");
-            childele.innerHTML= jsonObject[i]["file_name"] + "<br>" + "<br>";
-            childele.setAttribute("align","left");
-            childele.setAttribute("float","left");
-            childele.setAttribute("display","inline-block");
-            childele.setAttribute("width","50%");
-
-
-            if (jsonObject[i]["file_type"] == "folder"){
-                var a = document.createElement('a');
-                var linkText = document.createTextNode("Open");
-                a.appendChild(linkText);
-                a.title = "Open";
-                var locationInside = jsonObject[i]["location_inside"].toString();
-                a.onclick = function(){
-                    open_folder(locationInside);
-                    return false;
-                };
-                a.href = "#";
-            }if (jsonObject[i]["file_type"] != "folder"){
-            var a = document.createElement('a');
-            var linkText = document.createTextNode("Open");
-            a.appendChild(linkText);
-            a.title = "Open";
-            a.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
-            a.target = "_blank";
-
-            var download = document.createElement('a');
-            var linkText = document.createTextNode(" Download");
-            download.appendChild(linkText);
-            download.title = " Download";
-            download.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
-            download.download = jsonObject[i]["file_name"];
-
-            var delete_button = document.createElement('a');
-            var linkText = document.createTextNode(" Delete");
-            var fileName = jsonObject[i]["file_name"];
-            var file_id = jsonObject[i]["file_id"];
-            delete_button.appendChild(linkText);
-            delete_button.title = " Delete";
-            delete_button.setAttribute("padding","0px 10px");
-            delete_button .setAttribute("display","inline-block");
-
-            delete_button.onclick = function () {
-                delete_file(fileName, file_id);
-                return false;
-            }
-            delete_button.href = "#";
-            childele.appendChild(download);
-        }
-            ele.appendChild(imgEle);
-            ele.appendChild(childele);
-            childele.appendChild(a);
-            childele.appendChild(delete_button);
-            output.appendChild(ele);
-        }
-        i++;
-    }
-}
-
 
 //Onlick
 function create_folder() {

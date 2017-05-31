@@ -197,7 +197,26 @@ function ajaxFunction(location, clearResults){
     document.getElementById('upload_box').style.width = offsetHeight+'px';
 }
 
+<<<<<<< HEAD
 function load_files(response, location){
+=======
+function sortBy(prop)
+{
+    return function(a,b)
+    {
+        if( a[prop] > b[prop])
+        {
+            return 1;
+        }else if( a[prop] < b[prop] )
+        {
+            return -1;
+        }
+    return 0;
+    }
+}
+
+function after_load_load_files(response){
+>>>>>>> origin/master
 
     var jsonObject = JSON.parse(response);
 
@@ -207,6 +226,21 @@ function load_files(response, location){
     while (output.hasChildNodes()) {
         output.removeChild(output.lastChild);
     }
+<<<<<<< HEAD
+=======
+    var i=0;
+    var val="";
+
+    if(sortByName == true)
+    {
+        jsonObject.sort(sortBy("file_name"));
+    }
+    else if(sortByDate == true)
+    {
+        jsonObject.sort(sortBy("creation_date"));
+    }
+
+>>>>>>> origin/master
     while(i<=Object.keys(jsonObject).length)
     {
         if(!document.getElementById('timedrpact'+i))

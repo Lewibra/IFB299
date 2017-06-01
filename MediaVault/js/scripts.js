@@ -104,6 +104,26 @@ function load_files(response, location){
             download.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
             download.download = jsonObject[i]["file_name"];
 
+            var edit = document.createElement('a');
+            var linkText = document.createTextNode(" Edit Description");
+            var file_id = jsonObject[i]["file_id"];
+            edit.appendChild(linkText);
+            edit.title = " Edit Description";
+
+            edit.onclick = (function(file_id){
+                var desc = window.prompt("Enter description:", "");
+                if(desc == null || desc == "")
+                {
+                    return false;
+                } else {
+                    addDesc(file_id, desc);
+                    return false;
+                }
+            })(file_id);
+
+            edit.href = "#";
+
+
             var delete_button = document.createElement('a');
             var linkText = document.createTextNode(" Delete");
             var fileName = jsonObject[i]["file_name"];
@@ -320,6 +340,16 @@ function delete_file(file_name, file_id){
             }
         });
     }
+}
+
+function addDesc(file_id, desc){
+    $.ajax({
+            url: "metadata.php?fileId=" + file_id + "&desc=" + desc,
+            success: function(response) {
+                // do something
+                window.location.reload(false);
+            }
+        });
 }
 
 $(document).ready(function() {

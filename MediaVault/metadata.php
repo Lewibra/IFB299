@@ -1,39 +1,18 @@
 <?php
-	include("config.php");
-	session_start();
+    require "variables.php";
+    require "config.php";
+    if (unlink("./mediavault_files/users/".$_SESSION['login_user']."/".$_GET['file'])){
+        $conn = new mysqli($servername, $username, $password, $dbname);
+        // Check connection
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
 
-	$mname = mysqli_real_escape_string($db,$_POST['metaname']);
-	$mvalue = mysqli_real_escape_string($db,$_POST['metavalue']);
+        $sql = "INSERT INTO file_details WHERE user_name = '" . $_SESSION["login_user"] . "'AND file_id ='" .$_GET["fileId"] .  "' ('details')
+                VALUES ('CONCAT_WS(details, $_GET["desc"])')";
 
-	$mstring = $mname . ',' . $mvalue . ';';
-
-
-
-	if($_SERVER["REQUEST_METHOD"] == "POST") {
-		$sql = "INSERT INTO 'user_id' WHERE user_name = '" . $_SESSION["login_user"]."' ('metadata')
-                VALUES ('CONCAT_WS(metadata, $mstring)')";
-	}
+        if ($conn->query($sql) === FALSE) {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+        $conn->close();
 ?>
-<html>
-	<head>
-		<title>uDrop</title>
-		<link rel="stylesheet" type="text/css" href="css/style.css"/>
-		<script src="js/script.js"></script>
-	</head>
-	<body>
-		<h1>uDrop</h1>
-		<form action="" method="POST">
-  			<div class="titlecontainer">
-    			<p>Login</p>
-  			</div>
-  			<div class="container">
-    			<label><b>Metadata Label</b></label>
-    			<input type="text" placeholder="Username" name="metaname" required>
-
-    			<label><b>Value</b></label>
-    			<input type="password" placeholder="Password" name="metavalue" required>
-    			<button id="submit" type="submit" style="padding-left: 0; margin-left: 0; width: 100%">Apply</button>
-  			</div>
-		</form>
-	</body>
-</html>

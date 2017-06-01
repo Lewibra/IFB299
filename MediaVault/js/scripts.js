@@ -79,10 +79,15 @@ function load_files(response, location){
                 a.appendChild(linkText);
                 a.title = "Open";
                 var locationInside = jsonObject[i]["location_inside"].toString();
-                a.onclick = function(){
-                    open_folder(locationInside);
-                    return false;
-                };
+
+                a.onclick = (function(locationInside){
+                        return function(){
+                            open_folder(locationInside);
+                            return false;
+                        }
+                    })(locationInside);
+
+
                 a.href = "#";
             }if (jsonObject[i]["file_type"] != "folder"){
             var a = document.createElement('a');
@@ -108,10 +113,13 @@ function load_files(response, location){
             delete_button.setAttribute("padding","0px 10px");
             delete_button .setAttribute("display","inline-block");
 
-            delete_button.onclick = function () {
-                delete_file(fileName, file_id);
-                return false;
-            }
+            delete_button.onclick = (function(fileName, file_id){
+                return function(){
+                    delete_file(fileName, file_id);
+                    return false;
+                }
+            })(fileName,file_id);
+
             delete_button.href = "#";
             childele.appendChild(download);
         }

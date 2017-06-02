@@ -2,6 +2,7 @@
 require "variables.php";
 session_start();
 session_id($_GET['sess']);
+echo $_SESSION['location'];
 if(!empty($_FILES)){
     $dbHost = 'localhost:8889';
     $dbUsername = 'root';
@@ -27,7 +28,7 @@ if(!empty($_FILES)){
 
     $newName = preg_replace('/\s+/', '', $fileName);
 
-    if (!is_file($_FILES['file']['tmp_name'])){
+    if (is_file($_FILES['file']['tmp_name'])){
         if(move_uploaded_file($_FILES['file']['tmp_name'], $string)){
             //insert file information into db table
 

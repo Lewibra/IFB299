@@ -1,7 +1,7 @@
 <?php
 require "variables.php";
 session_start();
-session_id($_GET['sess']);
+$_SESSION['location'] = $_SESSION['login_user'];
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection

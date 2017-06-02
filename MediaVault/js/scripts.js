@@ -52,11 +52,18 @@ function sortBy(prop)
     }
 }
 
+function addDesc(file_id, desc){
+    $.ajax({
+            url: "metadata.php?fileId=" + file_id + "&desc=" + desc,
+            success: function(response) {
+                // do something
+                    window.location.reload(false);
+            }
+    });
+}
+
 
 function load_files(response, sortByName, sortByMetaData, SortByDate){
-
-    var jsonObject = JSON.parse(response);
-
     var output = document.getElementById('filepanel');
     var i=0;
     var val="";
@@ -64,15 +71,14 @@ function load_files(response, sortByName, sortByMetaData, SortByDate){
         output.removeChild(output.lastChild);
     }
 
-    /*if(sortByName == true)
-    {
-        jsonObject.sort(sortBy("file_name"));
+    try {
+        var jsonObject = JSON.parse(response);
     }
-    else if(sortByDate == true)
-    {
-        jsonObject.sort(sortBy("creation_date"));
+    catch(e) {
+        return;
     }
-    */
+
+
 
     while(i<=Object.keys(jsonObject).length)
     {
@@ -102,7 +108,7 @@ function load_files(response, sortByName, sortByMetaData, SortByDate){
 
             if (jsonObject[i]["file_type"] == "folder"){
                 var a = document.createElement('a');
-                var linkText = document.createTextNode("Open");
+                var linkText = document.createTextNode(" Open ");
                 a.appendChild(linkText);
                 a.title = "Open";
                 var locationInside = jsonObject[i]["location_inside"].toString();
@@ -118,38 +124,18 @@ function load_files(response, sortByName, sortByMetaData, SortByDate){
                 a.href = "#";
             }if (jsonObject[i]["file_type"] != "folder"){
             var a = document.createElement('a');
-            var linkText = document.createTextNode("Open");
+            var linkText = document.createTextNode(" Open | ");
             a.appendChild(linkText);
-            a.title = "Open";
+            a.title = " Open | ";
             a.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
             a.target = "_blank";
 
             var download = document.createElement('a');
-            var linkText = document.createTextNode(" Download");
+            var linkText = document.createTextNode(" Download | ");
             download.appendChild(linkText);
             download.title = " Download";
             download.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
             download.download = jsonObject[i]["file_name"];
-
-            var edit = document.createElement('a');
-            var linkText = document.createTextNode(" Edit Description");
-            var file_id = jsonObject[i]["file_id"];
-            edit.appendChild(linkText);
-            edit.title = " Edit Description";
-
-            edit.onclick = (function(file_id){
-                var desc = window.prompt("Enter description:", "");
-                if(desc == null || desc == "")
-                {
-                    return false;
-                } else {
-                    addDesc(file_id, desc);
-                    return false;
-                }
-            })(file_id);
-
-            edit.href = "#";
-
 
             var delete_button = document.createElement('a');
             var linkText = document.createTextNode(" Delete");
@@ -167,8 +153,29 @@ function load_files(response, sortByName, sortByMetaData, SortByDate){
                 }
             })(fileName,file_id);
 
+            var edit = document.createElement('a');
+            var linkText2 = document.createTextNode(" Edit Description |");
+            var file_id2 = jsonObject[i]["file_id"];
+            edit.appendChild(linkText2);
+            edit.title = " | Edit Description | ";
+
+            edit.onclick = (function(file_id2){
+                return function(){
+                    var desc = window.prompt("Enter description:", "");
+                    if(desc == null || desc == "") {
+                        return false;
+                    } else {
+                        addDesc(file_id2, desc);
+                        return false;
+                    }
+                }
+            })(file_id2);
+
+            edit.href = "#";
+
             delete_button.href = "#";
             childele.appendChild(download);
+            childele.appendChild(edit);
         }
             ele.appendChild(imgEle);
             ele.appendChild(childele);
@@ -245,6 +252,7 @@ function ajaxFunction(location, clearResults){
     ajaxRequest.onreadystatechange = function(){
         if(ajaxRequest.readyState == 4){
             load_files(ajaxRequest.responseText, location);
+            location.reload();
         }
     }
 
@@ -367,16 +375,6 @@ function delete_file(file_name, file_id){
             }
         });
     }
-}
-
-function addDesc(file_id, desc){
-    $.ajax({
-            url: "metadata.php?fileId=" + file_id + "&desc=" + desc,
-            success: function(response) {
-                // do something
-                window.location.reload(false);
-            }
-        });
 }
 
 $(document).ready(function() {

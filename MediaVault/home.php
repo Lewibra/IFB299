@@ -3,6 +3,7 @@
     if ($_SESSION['location'] == ""){
         $_SESSION['location'] = $_SESSION["login_user"];
     }
+    echo $_SESSION['location'];
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -82,30 +83,6 @@
     <div class="w3-container w3-padding-large" style="margin-bottom:32px">
     </div>
 
-    <!-- Footer -->
-    <footer class="w3-container w3-padding-32 w3-blue-grey">
-        <div class="w3-row-padding">
-            <div class="w3-half">
-                <h3>FOOTER</h3>
-                <p>MediaVault.</p>
-            </div>
-            <div class="w3-half">
-                <h3>PLACEHOLDER</h3>
-                <ul class="w3-ul w3-hoverable">
-                    <li class="w3-padding-16">
-                        <span class="w3-large">MediaVault</span><br>
-                        <span>MediaVault</span>
-                    </li>
-                    <li class="w3-padding-16">
-                        <span class="w3-large">MediaVault</span><br>
-                        <span>MediaVault</span>
-                    </li>
-                </ul>
-            </div>
-
-
-        </div>
-    </footer>
     <div class="w3-center w3-grey w3-padding-24">Powered by MediaVault</div>
 </div>
 </body>
@@ -114,7 +91,7 @@
 <script>
 
     var myvar = <?php echo json_encode($_SESSION['location']); ?>;
-    ajaxFunction(myvar);
+    open_folder(myvar);
 </script>
 <!--- JQUERY -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js">

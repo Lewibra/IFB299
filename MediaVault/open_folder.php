@@ -1,7 +1,6 @@
 <?php
 require "variables.php";
 session_start();
-session_id($_GET['sess']);
 $_SESSION['location'] = $_GET['search_terms'];
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -14,7 +13,7 @@ $sql = "SELECT * FROM file_details WHERE user_name = '" . $_SESSION["login_user"
 
 $result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
+if ($result->num_rows >= 0) {
     $data = array();
     while($row = $result->fetch_assoc()) {
         $data[] = $row;

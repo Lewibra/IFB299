@@ -3,7 +3,6 @@
     if ($_SESSION['location'] == ""){
         $_SESSION['location'] = $_SESSION["login_user"];
     }
-    echo $_SESSION['location'];
 ?>
 <!DOCTYPE HTML>
 <html>

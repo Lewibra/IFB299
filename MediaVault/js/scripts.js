@@ -10,6 +10,33 @@ function side_bar_close() {
     document.getElementById("myOverlay").style.display = "none";
 }
 
+function log_out() {
+    var ajaxRequest;  // The variable that makes Ajax possible!
+    try {
+        // Opera 8.0+, Firefox, Safari
+        ajaxRequest = new XMLHttpRequest();
+    }catch (e) {
+        // Internet Explorer Browsers
+        try {
+            ajaxRequest = new ActiveXObject("Msxml2.XMLHTTP");
+        }catch (e) {
+            try{
+                ajaxRequest = new ActiveXObject("Microsoft.XMLHTTP");
+            }catch (e){
+                // Something went wrong
+                alert("Your browser broke!");
+                return false;
+            }
+        }
+    }
+    ajaxRequest.onreadystatechange = function(){
+        if(ajaxRequest.readyState == 4){
+        }
+    }
+    ajaxRequest.open("GET", "logout.php", true);
+    ajaxRequest.send(null);
+}
+
 function sortBy(prop)
 {
     return function(a,b)
@@ -26,7 +53,7 @@ function sortBy(prop)
 }
 
 
-function load_files(response, location){
+function load_files(response, sortByName, sortByMetaData, SortByDate){
 
     var jsonObject = JSON.parse(response);
 
@@ -49,10 +76,10 @@ function load_files(response, location){
 
     while(i<=Object.keys(jsonObject).length)
     {
-        if(!document.getElementById('timedrpact'+i))
+        if(!document.getElementById(jsonObject[i]["file_name"]+i))
         {
             var ele = document.createElement("div");
-            ele.setAttribute("id","timedrpact"+i);
+            ele.setAttribute("id",jsonObject[i]["file_name"]+i);
             ele.setAttribute("class","w3-third w3-container w3-margin-bottom w3-hover-opacity");
 
             var imgEle = document.createElement("img");
@@ -421,4 +448,14 @@ function change_password(){
             }
         });
     }
+}
+
+function sort_name(){
+    var main = document.getElementById( 'filepanel' );
+
+    [].map.call( main.children, Object ).sort( function ( a, b ) {
+        return +a.id.match( /\d+/ ) - +b.id.match( /\d+/ );
+    }).forEach( function ( elem ) {
+        main.appendChild( elem );
+    });
 }

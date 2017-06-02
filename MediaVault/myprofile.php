@@ -1,13 +1,13 @@
 <?php
-
+    include "config.php";
  	include "session.php";
     if ($_SESSION['location'] == ""){
         $_SESSION['location'] = $_SESSION["login_user"];
     }
 
-	$result = "SELECT * FROM user_id WHERE user_name = '" . $_SESSION["login_user"]."'";
-
-    while($row = mysql_fetch_assoc($result)){
+	$sql = "SELECT * FROM user_id WHERE user_name = '" . $_SESSION["login_user"]."'";
+    $result = $db->query($sql);
+    while($row = $result->fetch_assoc()){
 ?>
 <!DOCTYPE html>
 <html>

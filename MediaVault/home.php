@@ -33,7 +33,8 @@
     </div>
     <div class="w3-bar-block">
         <a href="#myfiles" onclick="side_bar_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right w3-text-blue-gray"></i>MY FILES</a>
-        <a href="#myprofile" onclick="side_bar_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right w3-text-blue-gray"></i>ABOUT</a>
+        <a href="./myprofile.php" onclick="side_bar_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right w3-text-blue-gray"></i>ABOUT</a>
+        <a href="javascript:void(0);" onclick="log_out()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right w3-text-blue-gray"></i>LOG OUT</a>
 
     </div>
 </nav>
@@ -52,11 +53,10 @@
             <h1 class="w3-text-blue-gray"><b>My Files</b></h1>
             <div class="w3-section w3-bottombar w3-padding-16">
 
-                <span class="w3-margin-right w3-text-blue-gray">Filter:</span>
-                <button class="w3-button w3-blue-grey">ALL</button>
-                <button class="w3-button w3-white w3-text-blue-gray"><i class="fa fa-music w3-margin-right"></i>Music</button>
-                <button class="w3-button w3-white w3-hide-small w3-text-blue-gray"><i class="fa fa-photo w3-margin-right"></i>Photos</button>
-                <button class="w3-button w3-white w3-hide-smal w3-text-blue-gray"><i class="fa fa-file w3-margin-right"></i>PDF</button>
+                <span class="w3-margin-right w3-text-blue-gray">Sort By:</span>
+                <button href="javascript:void(0);" onclick="sort_name()" class="w3-button w3-white w3-text-blue-gray"><i class="fa fa-file w3-margin-right"></i>Name</button>
+                <button class="w3-button w3-white w3-hide-small w3-text-blue-gray"><i class="fa fa-file w3-margin-right"></i>Description</button>
+                <button class="w3-button w3-white w3-hide-smal w3-text-blue-gray"><i class="fa fa-file w3-margin-right"></i>Date</button>
 
                 <span class="w3-margin-right w3-margin-left w3-text-blue-gray">Search:</span>
 

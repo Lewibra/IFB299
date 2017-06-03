@@ -31,6 +31,7 @@ function log_out() {
     }
     ajaxRequest.onreadystatechange = function(){
         if(ajaxRequest.readyState == 4){
+            location.reload();
         }
     }
     ajaxRequest.open("GET", "logout.php", true);
@@ -120,63 +121,76 @@ function load_files(response, sortByName, sortByMetaData, SortByDate){
                         }
                     })(locationInside);
 
+                var delete_button = document.createElement('a');
+                var linkText = document.createTextNode(" Delete");
+                var fileName = jsonObject[i]["file_name"];
+                var file_id = jsonObject[i]["file_id"];
+                delete_button.appendChild(linkText);
+                delete_button.title = " Delete";
+                delete_button.setAttribute("padding","0px 10px");
+                delete_button .setAttribute("display","inline-block");
+                delete_button.href = "#";
+                delete_button.onclick = (function(fileName, file_id){
+                    return function(){
+                        delete_file(fileName, file_id);
+                        return false;
+                    }
+                })(fileName,file_id);
 
                 a.href = "#";
             }if (jsonObject[i]["file_type"] != "folder"){
-            var a = document.createElement('a');
-            var linkText = document.createTextNode(" Open | ");
-            a.appendChild(linkText);
-            a.title = " Open | ";
-            a.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
-            a.target = "_blank";
+                var a = document.createElement('a');
+                var linkText = document.createTextNode(" Open | ");
+                a.appendChild(linkText);
+                a.title = " Open | ";
+                a.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
+                a.target = "_blank";
 
-            var download = document.createElement('a');
-            var linkText = document.createTextNode(" Download | ");
-            download.appendChild(linkText);
-            download.title = " Download";
-            download.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
-            download.download = jsonObject[i]["file_name"];
+                var download = document.createElement('a');
+                var linkText = document.createTextNode(" Download | ");
+                download.appendChild(linkText);
+                download.title = " Download";
+                download.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
+                download.download = jsonObject[i]["file_name"];
 
-            var delete_button = document.createElement('a');
-            var linkText = document.createTextNode(" Delete");
-            var fileName = jsonObject[i]["file_name"];
-            var file_id = jsonObject[i]["file_id"];
-            delete_button.appendChild(linkText);
-            delete_button.title = " Delete";
-            delete_button.setAttribute("padding","0px 10px");
-            delete_button .setAttribute("display","inline-block");
-
-            delete_button.onclick = (function(fileName, file_id){
-                return function(){
-                    delete_file(fileName, file_id);
-                    return false;
-                }
-            })(fileName,file_id);
-
-            var edit = document.createElement('a');
-            var linkText2 = document.createTextNode(" Edit Description |");
-            var file_id2 = jsonObject[i]["file_id"];
-            edit.appendChild(linkText2);
-            edit.title = " | Edit Description | ";
-
-            edit.onclick = (function(file_id2){
-                return function(){
-                    var desc = window.prompt("Enter description:", "");
-                    if(desc == null || desc == "") {
-                        return false;
-                    } else {
-                        addDesc(file_id2, desc);
+                var delete_button = document.createElement('a');
+                var linkText = document.createTextNode(" Delete");
+                var fileName = jsonObject[i]["file_name"];
+                var file_id = jsonObject[i]["file_id"];
+                delete_button.appendChild(linkText);
+                delete_button.title = " Delete";
+                delete_button.setAttribute("padding","0px 10px");
+                delete_button .setAttribute("display","inline-block");
+                delete_button.href = "#";
+                delete_button.onclick = (function(fileName, file_id){
+                    return function(){
+                        delete_file(fileName, file_id);
                         return false;
                     }
-                }
-            })(file_id2);
+                })(fileName,file_id);
 
-            edit.href = "#";
+                var edit = document.createElement('a');
+                var linkText2 = document.createTextNode(" Edit Description |");
+                var file_id2 = jsonObject[i]["file_id"];
+                edit.appendChild(linkText2);
+                edit.title = " | Edit Description | ";
 
-            delete_button.href = "#";
-            childele.appendChild(download);
-            childele.appendChild(edit);
-        }
+                edit.onclick = (function(file_id2){
+                    return function(){
+                        var desc = window.prompt("Enter description:", "");
+                        if(desc == null || desc == "") {
+                            return false;
+                        } else {
+                            addDesc(file_id2, desc);
+                            return false;
+                        }
+                    }
+                })(file_id2);
+
+                edit.href = "#";
+                childele.appendChild(download);
+                childele.appendChild(edit);
+            }
             ele.appendChild(imgEle);
             ele.appendChild(childele);
             childele.appendChild(a);
@@ -355,9 +369,11 @@ function create_folder() {
             url: "upload_folder.php",
             type: "POST",
             dataType:'json',
+            async:false,
             data:{action:'call_this', folderName: folder.toString()},
             success:function() {
-                window.location.reload(false);
+                location.reload();
+                return true;
             }
         });
     }

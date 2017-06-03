@@ -1,14 +1,12 @@
 <?php
 require "variables.php";
 session_start();
-session_id($_GET['sess']);
-echo $_SESSION['location'];
 if(!empty($_FILES)){
     $dbHost = 'localhost:8889';
     $dbUsername = 'root';
     $dbPassword = 'root';
-    $dbName = 'Media_Vault_Schema'; 
-    
+    $dbName = 'Media_Vault_Schema';
+
     //connect with the database
     $conn = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
     if($mysqli->connect_errno){
@@ -16,7 +14,7 @@ if(!empty($_FILES)){
     }
  
  	$userName = $dbUsername;
-    $targetDir = "./mediavault_files/users/" . $_SESSION['login_user'];
+    $targetDir = "./mediavault_files/users/" . $_SESSION['location'];
     $fileName = $_FILES['file']['name'];
     $targetFile = $targetDir . "/" .$fileName;
     $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
@@ -28,7 +26,7 @@ if(!empty($_FILES)){
 
     $newName = preg_replace('/\s+/', '', $fileName);
 
-    if (is_file($_FILES['file']['tmp_name'])){
+    if (file_exists($_FILES['file']['tmp_name'])){
         if(move_uploaded_file($_FILES['file']['tmp_name'], $string)){
             //insert file information into db table
 

@@ -89,6 +89,18 @@ function load_files(response, sortByName, sortByMetaData, SortByDate){
             ele.setAttribute("id",jsonObject[i]["file_name"]+i);
             ele.setAttribute("class","w3-third w3-container w3-margin-bottom w3-hover-opacity");
 
+            var date = document.createElement("div");
+            date.setAttribute("id",jsonObject[i]["creation_date"]+i);
+            date.setAttribute("class","w3-third w3-container w3-margin-bottom w3-hover-opacity");
+            date.setAttribute("hidden","true");
+
+            var description = document.createElement("div");
+            description.setAttribute("id",jsonObject[i]["details"]+i);
+            description.setAttribute("class","w3-third w3-container w3-margin-bottom w3-hover-opacity");
+            description.setAttribute("hidden","true");
+
+
+
             var imgEle = document.createElement("img");
             imgEle.setAttribute("src","Images/icons/" + jsonObject[i]["file_type"].toLowerCase() + ".png");
             imgEle.setAttribute("display","inline-block");
@@ -100,7 +112,7 @@ function load_files(response, sortByName, sortByMetaData, SortByDate){
             var childele = document.createElement("div");
             childele.setAttribute("id","childele"+i);
             childele.setAttribute("class","w3-container w3-white");
-            childele.innerHTML= jsonObject[i]["file_name"] + "<br>" + "<br>";
+            childele.innerHTML= jsonObject[i]["file_name"] + "<br>" + "<br>" + "Description: " + jsonObject[i]["details"] + "<br><br>" ;
             childele.setAttribute("align","left");
             childele.setAttribute("float","left");
             childele.setAttribute("display","inline-block");
@@ -196,6 +208,8 @@ function load_files(response, sortByName, sortByMetaData, SortByDate){
             childele.appendChild(a);
             childele.appendChild(delete_button);
             output.appendChild(ele);
+            output.appendChild(date);
+            output.appendChild(description);
         }
         i++;
     }
@@ -460,11 +474,26 @@ function change_password(){
 }
 
 function sort_name(){
-    var main = document.getElementById( 'filepanel' );
+    var mylist = $('#filepanel');
 
-    [].map.call( main.children, Object ).sort( function ( a, b ) {
-        return +a.id.toLowerCase().match( /\d+/ ) - +b.id.match( /\d+/ );
-    }).forEach( function ( elem ) {
-        main.appendChild( elem );
+    var listitems = mylist.children('div').get();
+
+    listitems.sort(function(a, b) {
+        return $(a).text().toUpperCase().localeCompare($(b).text().toUpperCase());
     });
+
+    $.each(listitems, function(index, item) {
+        mylist.append(item);
+    });
+}
+
+function sort_description(){
+    var mylist = $('#filepanel');
+    var listitems = mylist.children("div");
+    listitems.sort(function(a, b) {
+        var compA = $(a).text().toUpperCase();
+        var compB = $(b).text().toUpperCase();
+        return (compA < compB) ? -1 : (compA > compB) ? 1 : 0;
+    })
+    $(mylist).append(listitems);
 }

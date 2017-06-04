@@ -9,7 +9,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM file_details WHERE user_name = '" . $_SESSION["login_user"] . "' AND file_name LIKE '%" . $_GET['search_terms'] . "%'";
+$sql = "SELECT * FROM file_details WHERE user_name = '" . $_SESSION["login_user"] . "' AND details LIKE '%" . $_GET['search_terms'] . "%'";
 
 $result = $conn->query($sql);
 

@@ -23,7 +23,9 @@
       if($count != 1) {
          $sql = "INSERT INTO `user_id` VALUES ('$myusername',  '$email', '$mypassword', '$fname', '$lname')";
          mysqli_query($db,$sql);
-
+         if (!file_exists('./mediavault_files/users/'.$_POST['uname'])) {
+             mkdir('./mediavault_files/users/'.$_POST['uname'], 0777, true);
+         }
          header("location: index.php");
       }else {
          $error = "That username is taken";

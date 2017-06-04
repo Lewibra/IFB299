@@ -5,7 +5,7 @@ session_id($_GET['sess']);
 header("Content-Type: application/json", true);
 if($_POST['action'] == 'call_this') {
         //Register the new folder into the SQL database
-        $sql = "INSERT INTO 'user_id' ('password')
+        $sql = "INSERT INTO 'user_id' WHERE user_name = '" . $_SESSION["login_user"]."' ('password')
                 VALUES ('pass')";
 
         if ($conn->query($sql) === FALSE) {

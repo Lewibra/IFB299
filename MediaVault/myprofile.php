@@ -1,13 +1,13 @@
 <?php
-
+    include "config.php";
  	include "session.php";
     if ($_SESSION['location'] == ""){
         $_SESSION['location'] = $_SESSION["login_user"];
     }
-    
-    $result = mysql_query("SELECT * FROM user_id ");
-    
-    while($row = mysql_fetch_assoc($result)){
+
+	$sql = "SELECT * FROM user_id WHERE user_name = '" . $_SESSION["login_user"]."'";
+    $result = $db->query($sql);
+    while($row = $result->fetch_assoc()){
 ?>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
 	<title></title>
-	<script type="text/javascript" src="scripts.js"></script>
+	<script type="text/javascript" src="js/scripts.js"></script>
 	<link type="text/css" rel="stylesheet" href="CSS/style.css" />
 </head>
 <body>
@@ -61,6 +61,7 @@
           <td id="lastName" data-title="">
           	<?php
 					echo $row['last_name'];
+    					}
 			?>
           </td>
           <td data-title="Edit">
@@ -72,9 +73,6 @@
             <a href="#" onclick="change_password()" target="_blank">Change Password</a>
           </td>
         </tr>
-        <?php 
-        	} 
-        ?>
       </tbody>
     </table>
   </div>

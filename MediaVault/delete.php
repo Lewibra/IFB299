@@ -2,7 +2,6 @@
     require "variables.php";
     require "config.php";
     $fileLocation = "./mediavault_files/users/".$_SESSION['location']."/".$_GET['file'];
-
     if (unlink($fileLocation)){
         $conn = new mysqli($servername, $username, $password, $dbname);
         // Check connection
@@ -35,5 +34,3 @@
         }
         $conn->close();
     }
-
-

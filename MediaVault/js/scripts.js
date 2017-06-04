@@ -366,14 +366,9 @@ function create_folder() {
         alert("Invalid file name")
     }else{
         $.ajax({
-            url: "upload_folder.php",
-            type: "POST",
-            dataType:'json',
-            async:false,
-            data:{action:'call_this', folderName: folder.toString()},
+            url: "upload_folder.php?action=call_this&folderName=" + folder.toString(),
             success:function() {
-                location.reload();
-                return true;
+                window.location.reload(false);
             }
         });
     }
@@ -468,7 +463,7 @@ function sort_name(){
     var main = document.getElementById( 'filepanel' );
 
     [].map.call( main.children, Object ).sort( function ( a, b ) {
-        return +a.id.match( /\d+/ ) - +b.id.match( /\d+/ );
+        return +a.id.toLowerCase().match( /\d+/ ) - +b.id.match( /\d+/ );
     }).forEach( function ( elem ) {
         main.appendChild( elem );
     });

@@ -32,9 +32,9 @@
         <p class="w3-text-grey">Lewis Tracy</p>
     </div>
     <div class="w3-bar-block">
-        <a href="#myfiles" onclick="side_bar_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right w3-text-blue-gray"></i>MY FILES</a>
+        <a href="javascript:void(0);" onclick="after_load_ajaxFunction('',true)"  class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right w3-text-blue-gray"></i>MY FILES</a>
         <a href="./myprofile.php" onclick="side_bar_close()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right w3-text-blue-gray"></i>ABOUT</a>
-        <a href="javascript:void(0);" onclick="log_out()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-user fa-fw w3-margin-right w3-text-blue-gray"></i>LOG OUT</a>
+        <a href="javascript:void(0);" onclick="log_out()" class="w3-bar-item w3-button w3-padding"><i class="fa fa-door fa-fw w3-margin-right w3-text-blue-gray"></i>LOG OUT</a>
 
     </div>
 </nav>
@@ -110,11 +110,9 @@
 </script>
 
 <script>
-
     $("#theForm").submit(function(e) {
         e.preventDefault();
         search_files();
     });
-
 </script>
 </html>

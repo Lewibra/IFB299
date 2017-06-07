@@ -1,48 +1,22 @@
 <?php
-require "variables.php";
+require "config.php";
 session_start();
 if(!empty($_FILES)){
-    $dbHost = 'localhost:8889';
-    $dbUsername = 'root';
-    $dbPassword = 'root';
-    $dbName = 'Media_Vault_Schema';
-
-    //connect with the database
-    $conn = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
-    if($mysqli->connect_errno){
-        echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
-    }
- 
- 	$userName = $dbUsername;
+ 	$userName = $username;
     $targetDir = "./mediavault_files/users/" . $_SESSION['location'];
     $fileName = $_FILES['file']['name'];
     $targetFile = $targetDir . "/" .$fileName;
     $fileType = pathinfo($fileName, PATHINFO_EXTENSION);
     $fileSize = filesize($fileName);
-
     $fileId = uniqid($userName);
 
-    $string = preg_replace('/\s+/', '', $targetFile);
-
-    $newName = preg_replace('/\s+/', '', $fileName);
-
     if (file_exists($_FILES['file']['tmp_name'])){
-        if(move_uploaded_file($_FILES['file']['tmp_name'], $string)){
+        if(move_uploaded_file($_FILES['file']['tmp_name'], $targetFile)){
             //insert file information into db table
-
-            //GET MAX FILE ID
-            $sql = "SELECT MAX(file_id) as max FROM file_details";
-            $result = $conn->query($sql);
-            if ($result->num_rows > 0) {
-                while($row = mysqli_fetch_assoc($result)) {
-                    $file_id = $row["max"] + 1;
-                }
-            } else {
-                $file_id = 0;
-            }
+            //Please note that the table is configured to auto increment
             //Register the new folder into the SQL database
-            $sql = "INSERT INTO `Media_Vault_Schema`.`file_details` (`user_name`, `file_id`, `file_name`, `file_type`, `file_location`, `location_inside`, `details`)
-                    VALUES ('".$_SESSION['login_user']."', '".$file_id."','".$newName."','".$fileType."', '".$_SESSION['location']."', '".$_SESSION['location']."/".$newName."', '".$newName."')";
+            $sql = "INSERT INTO `Media_Vault_Schema`.`file_details` (`user_name`, `file_name`, `file_type`, `file_location`, `location_inside`, `details`)
+                    VALUES ('".$_SESSION['login_user']."', '".$fileName."','".$fileType."', '".$_SESSION['location']."', '".$_SESSION['location']."/".$fileName."', '".$fileName."')";
 
             if ($conn->query($sql) === FALSE) {
                 echo "Error: " . $sql . "<br>" . $conn->error;

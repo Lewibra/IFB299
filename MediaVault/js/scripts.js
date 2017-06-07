@@ -415,11 +415,9 @@ function update_email(){
         alert("Invalid email address")
     }else{
         $.ajax({
-            url: "update_email.php",
-            type: "POST",
-            dataType:'json',
-            data:{action:'call_this', folderName: email.toString()},
+            url: "update_email.php?action=call_this&email=" + email.toString(),
             success:function() {
+                window.location.reload(false);
             }
         });
     }
@@ -431,11 +429,9 @@ function update_firstName(){
         alert("Invalid name")
     }else{
         $.ajax({
-            url: "update_firstName.php",
-            type: "POST",
-            dataType:'json',
-            data:{action:'call_this', folderName: first.toString()},
+            url: "update_firstName.php?action=call_this&first=" + first.toString(),
             success:function() {
+                window.location.reload(false);
             }
         });
     }
@@ -447,11 +443,9 @@ function update_lastName(){
         alert("Invalid name")
     }else{
         $.ajax({
-            url: "update_lastName.php",
-            type: "POST",
-            dataType:'json',
-            data:{action:'call_this', folderName: last.toString()},
+            url: "update_lastName.php?action=call_this&last=" + last.toString(),
             success:function() {
+                window.location.reload(false);
             }
         });
     }
@@ -463,11 +457,9 @@ function change_password(){
         alert("Invalid password")
     }else{
         $.ajax({
-            url: "change_password.php",
-            type: "POST",
-            dataType:'json',
-            data:{action:'call_this', folderName: pass.toString()},
+            url: "change_password.php?action=asldnfjanefkjanwekjfbakwefawefajkwbefkjabwe&asdfasdfasdfasdf=" + pass.toString(),
             success:function() {
+                window.location.reload(false);
             }
         });
     }

@@ -12,9 +12,10 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="scripts.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="scripts.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/scripts.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="825">
               <caret line="55" column="9" lean-forward="false" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
               <folding>
@@ -28,10 +29,16 @@
                 <marker date="1496806493000" expanded="true" signature="15792:15882" ph="{...}" />
                 <marker date="1496806493000" expanded="true" signature="15930:15966" ph="{...}" />
               </folding>
+=======
+            <state relative-caret-position="191">
+              <caret line="85" column="64" lean-forward="false" selection-start-line="85" selection-start-column="64" selection-end-line="85" selection-end-column="64" />
+              <folding />
+>>>>>>> parent of fefab14... Rearrange Git For Submission
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="metadata.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/metadata.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -41,50 +48,124 @@
                 <marker date="1496806489000" expanded="true" signature="176:240" ph="..." />
                 <marker date="1496806489000" expanded="true" signature="254:427" ph="UPDATE file_... " />
               </folding>
+=======
+      <file leaf-file-name="upload_folder.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/upload_folder.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="61" lean-forward="false" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="61" />
+              <folding>
+                <marker date="1496543449000" expanded="true" signature="582:626" ph="SELECT MAX(f... " />
+                <marker date="1496543449000" expanded="true" signature="943:1282" ph="INSERT INTO `file_details`... " />
+                <marker date="1496543449000" expanded="true" signature="1236:1282" ph="INSERT INTO `file_details`... " />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="home.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/home.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1485">
+              <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+              <folding />
+>>>>>>> parent of fefab14... Rearrange Git For Submission
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
       <file leaf-file-name="change_password.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/change_password.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="90">
               <caret line="6" column="29" lean-forward="false" selection-start-line="6" selection-start-column="29" selection-end-line="6" selection-end-column="29" />
               <folding />
+=======
+      <file leaf-file-name="metadata.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/metadata.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="51" lean-forward="false" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+              <folding>
+                <marker date="1496555048000" expanded="true" signature="254:424" ph="UPDATE file_... " />
+                <marker date="1496555048000" expanded="true" signature="254:426" ph="UPDATE file_... " />
+                <marker date="1496555048000" expanded="true" signature="254:427" ph="UPDATE file_... " />
+                <marker date="1496555048000" expanded="true" signature="260:424" ph="INSERT INTO file_details... " />
+              </folding>
+>>>>>>> parent of fefab14... Rearrange Git For Submission
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="update_lastName.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/update_lastName.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
               <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
               <folding />
+=======
+      <file leaf-file-name="session.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/session.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+              <folding>
+                <marker date="1496544195000" expanded="true" signature="134:195" ph="select user_... user_id" />
+              </folding>
+>>>>>>> parent of fefab14... Rearrange Git For Submission
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="update_email.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/update_email.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="30">
               <caret line="2" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="1" />
               <folding />
+=======
+      <file leaf-file-name="upload.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/upload.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="66" lean-forward="false" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="66" />
+              <folding>
+                <marker date="1496459002000" expanded="true" signature="1080:1124" ph="SELECT MAX(f... " />
+                <marker date="1496459002000" expanded="true" signature="1481:1626" ph="INSERT INTO `file_details`... " />
+                <marker date="1496459002000" expanded="true" signature="1481:1627" ph="INSERT INTO `file_details`... " />
+                <marker date="1496459002000" expanded="true" signature="1481:1803" ph="INSERT INTO `Media_Vault_Schema`.`file_details`... " />
+                <marker date="1496459002000" expanded="true" signature="1481:1819" ph="INSERT INTO `Media_Vault_Schema`.`file_details`... " />
+              </folding>
+>>>>>>> parent of fefab14... Rearrange Git For Submission
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="update_firstName.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/update_firstName.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
               <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
               <folding />
+=======
+      <file leaf-file-name="update_lastName.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/update_lastName.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding>
+                <marker date="1496410038000" expanded="true" signature="233:350" ph="INSERT INTO " />
+              </folding>
+>>>>>>> parent of fefab14... Rearrange Git For Submission
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="myprofile.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/myprofile.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -99,11 +180,21 @@
                 <marker date="1496806493000" expanded="true" signature="2066:2160" ph="..." />
                 <marker date="1496806493000" expanded="true" signature="2066:2168" ph="..." />
                 <marker date="1496806493000" expanded="true" signature="2066:2176" ph="..." />
+=======
+      <file leaf-file-name="update_firstName.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/update_firstName.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="26" lean-forward="false" selection-start-line="3" selection-start-column="26" selection-end-line="3" selection-end-column="26" />
+              <folding>
+                <marker date="1496410038000" expanded="true" signature="233:352" ph="INSERT INTO " />
+>>>>>>> parent of fefab14... Rearrange Git For Submission
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="home.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/home.php">
           <provider selected="true" editor-type-id="text-editor">
@@ -121,13 +212,22 @@
                 <marker date="1496806602000" expanded="true" signature="5061:5170" ph="..." />
                 <marker date="1496806602000" expanded="true" signature="5100:5159" ph="{...}" />
               </folding>
+=======
+      <file leaf-file-name="update_email.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/update_email.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+>>>>>>> parent of fefab14... Rearrange Git For Submission
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="upload.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/upload.php">
+      <file leaf-file-name="signup.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/signup.php">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="255">
               <caret line="22" column="32" lean-forward="false" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
               <folding>
@@ -136,6 +236,11 @@
                 <marker date="1496806602000" expanded="true" signature="1811:1990" ph="..." />
                 <marker date="1496806602000" expanded="true" signature="1811:1992" ph="..." />
               </folding>
+=======
+            <state relative-caret-position="495">
+              <caret line="33" column="2" lean-forward="false" selection-start-line="33" selection-start-column="2" selection-end-line="33" selection-end-column="2" />
+              <folding />
+>>>>>>> parent of fefab14... Rearrange Git For Submission
             </state>
           </provider>
         </entry>
@@ -265,7 +370,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
       <pane id="Scratches" />
+=======
+>>>>>>> parent of fefab14... Rearrange Git For Submission
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -292,6 +400,57 @@
               <option name="myItemId" value="mediavault_files" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
+<<<<<<< HEAD
+=======
+            <PATH_ELEMENT>
+              <option name="myItemId" value="users" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="niqa" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaVault" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaVault" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mediavault_files" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="users" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ltrac321" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaVault" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MediaVault" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="mediavault_files" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="users" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+>>>>>>> parent of fefab14... Rearrange Git For Submission
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -323,6 +482,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -494,10 +654,15 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="98729000" />
+=======
+    <option name="totallyTimeSpent" value="98721000" />
+>>>>>>> parent of fefab14... Rearrange Git For Submission
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19583334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -519,10 +684,14 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19583334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+>>>>>>> parent of fefab14... Rearrange Git For Submission
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21535394" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -619,6 +788,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="555">
           <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -804,7 +974,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="35" column="5" lean-forward="false" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+<<<<<<< HEAD
           <folding />
+=======
+          <folding>
+            <marker date="1496470222000" expanded="true" signature="434:568" ph="DELETE FROM " />
+            <marker date="1496470222000" expanded="true" signature="999:1227" ph="DELETE FROM " />
+            <marker date="1496470222000" expanded="true" signature="999:1253" ph="DELETE FROM " />
+            <marker date="1496470222000" expanded="true" signature="999:1272" ph="DELETE FROM " />
+          </folding>
+>>>>>>> parent of fefab14... Rearrange Git For Submission
         </state>
       </provider>
     </entry>
@@ -825,6 +1004,20 @@
             <marker date="1496806602000" expanded="true" signature="1811:1984" ph="..." />
             <marker date="1496806602000" expanded="true" signature="1811:1990" ph="..." />
             <marker date="1496806602000" expanded="true" signature="1811:1992" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/upload.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="66" lean-forward="false" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="66" />
+          <folding>
+            <marker date="1496459002000" expanded="true" signature="1080:1124" ph="SELECT MAX(f... " />
+            <marker date="1496459002000" expanded="true" signature="1481:1626" ph="INSERT INTO `file_details`... " />
+            <marker date="1496459002000" expanded="true" signature="1481:1627" ph="INSERT INTO `file_details`... " />
+            <marker date="1496459002000" expanded="true" signature="1481:1803" ph="INSERT INTO `Media_Vault_Schema`.`file_details`... " />
+            <marker date="1496459002000" expanded="true" signature="1481:1819" ph="INSERT INTO `Media_Vault_Schema`.`file_details`... " />
           </folding>
         </state>
       </provider>
@@ -865,10 +1058,37 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
+<<<<<<< HEAD
+=======
+          <folding>
+            <marker date="1496544195000" expanded="true" signature="134:195" ph="select user_... user_id" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/metadata.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="51" lean-forward="false" selection-start-line="9" selection-start-column="51" selection-end-line="9" selection-end-column="51" />
+          <folding>
+            <marker date="1496555048000" expanded="true" signature="254:424" ph="UPDATE file_... " />
+            <marker date="1496555048000" expanded="true" signature="254:426" ph="UPDATE file_... " />
+            <marker date="1496555048000" expanded="true" signature="254:427" ph="UPDATE file_... " />
+            <marker date="1496555048000" expanded="true" signature="260:424" ph="INSERT INTO file_details... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/home.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1485">
+          <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+>>>>>>> parent of fefab14... Rearrange Git For Submission
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/metadata.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -903,10 +1123,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="61" lean-forward="false" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="61" />
+=======
+    <entry file="file://$PROJECT_DIR$/upload_folder.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="61" lean-forward="false" selection-start-line="5" selection-start-column="61" selection-end-line="5" selection-end-column="61" />
+          <folding>
+            <marker date="1496543449000" expanded="true" signature="582:626" ph="SELECT MAX(f... " />
+            <marker date="1496543449000" expanded="true" signature="943:1282" ph="INSERT INTO `file_details`... " />
+            <marker date="1496543449000" expanded="true" signature="1236:1282" ph="INSERT INTO `file_details`... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/scripts.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="85" column="64" lean-forward="false" selection-start-line="85" selection-start-column="64" selection-end-line="85" selection-end-column="64" />
+>>>>>>> parent of fefab14... Rearrange Git For Submission
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/js/scripts.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="825">
@@ -925,5 +1164,7 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> parent of fefab14... Rearrange Git For Submission
   </component>
 </project>

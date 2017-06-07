@@ -13,6 +13,9 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <link rel="stylesheet" href="CSS/w3.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	<title></title>
 	<script type="text/javascript" src="js/scripts.js"></script>
@@ -74,7 +77,11 @@
         </tr>
       </tbody>
     </table>
+
   </div>
-</div>
+      <button class="w3-text-blue-gray" onclick="location.href='home.php'" type="button">Home</button>
+      <button class="w3-text-blue-gray" onclick="location.href='logout.php'" type="button">Log Out</button>
+
+  </div>
 </body>
 </html>

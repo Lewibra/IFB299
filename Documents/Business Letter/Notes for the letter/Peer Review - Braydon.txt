@@ -1,0 +1,16 @@
+Didn't look like there was an option to add a folder - sprint 2
+
+No drag and drop file upload functionality
+
+No preview file option
+
+No searching option
+
+Couldn't see a signup page
+
+Downloading files worked
+
+File icons did not reflect the file type
+
+They need the option to open files from the websiteMaybe they can have an option to edit the person’s account detailsThere’s no website name displayedThey might need icons for different file types that are displayed
+

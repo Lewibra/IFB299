@@ -1,7 +1,5 @@
 <?php
-require "variables.php";
 require "config.php";
-    $conn = new mysqli($servername, $username, $password, $dbname);
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);

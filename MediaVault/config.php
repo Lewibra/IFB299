@@ -1,7 +1,13 @@
 <?php
-   define('DB_SERVER', 'localhost:8889');
-   define('DB_USERNAME', 'root');
-   define('DB_PASSWORD', 'root');
-   define('DB_DATABASE', 'Media_Vault_Schema');
-   $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
-?>
+    require "variables.php";
+    define('DB_SERVER', $servername);
+    define('DB_USERNAME', $username);
+    define('DB_PASSWORD', $password);
+    define('DB_DATABASE', $dbname);
+    $db = mysqli_connect(DB_SERVER,DB_USERNAME,DB_PASSWORD,DB_DATABASE);
+
+    $conn = new mysqli($servername, $username, $password, $dbname);
+    // Check connection
+    if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+    }

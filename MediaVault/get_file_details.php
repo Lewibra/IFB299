@@ -9,10 +9,12 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT * FROM file_details WHERE user_name = '" . $_SESSION["login_user"] . "' AND file_location LIKE '" . $_GET['currentlocation'] . "%'";
+$sql = "SELECT * FROM file_details WHERE user_name = '" . $_SESSION["login_user"] . "' AND file_location = '" . $_GET['currentlocation'] . "'";
+$_SESSION['location'] = $_GET['currentlocation'] ;
 
 if ($_SESSION['login_user'] != $_GET['currentlocation']){
-    $sql = "SELECT * FROM file_details WHERE user_name = '" . $_SESSION["login_user"] . "' AND location_inside LIKE '" . $_GET['currentlocation'] . "%'";
+    $sql = "SELECT * FROM file_details WHERE user_name = '" . $_SESSION["login_user"] . "' AND file_location = '" . $_GET['locationInside'] ."'";
+    $_SESSION['location'] = $_GET['locationInside'] ;
 }
 
 $result = $conn->query($sql);

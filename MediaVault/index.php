@@ -20,6 +20,9 @@
     
       if($count == 1) {
          $_SESSION['login_user'] = $myusername;
+          if (!file_exists('./mediavault_files/users/'.$myusername)) {
+              mkdir('./mediavault_files/users/'.$myusername, 0777, true);
+          }
          header("location:home.php", true, 301);
       }else {
          $error = "Your Login Name or Password is invalid";
@@ -29,29 +32,26 @@
 <!DOCTYPE html>
 <html>
 	<head>
-        <title>Media Vault</title>
+        <title>MediaVault</title>
         <link rel="stylesheet" href="CSS/w3.css">
 		<link rel="stylesheet" type="text/css" href="CSS/style.css"/>
 		<script src="js/script.js"></script>
 	</head>
 	<body>
-		<h1>MediaVault</h1>
-        <div class="w3-center"><img src="Images/vault.png" style="width:5%;">
+        <div class="w3-center"><img src="Images/icons/MediaVaultlogo.png" style="width:30%;">
         </div>
         <form action="" method="POST">
-  			<div class="titlecontainer">
-    			<p>Login</p>
-  			</div>
         <p style="text-align: center; color: red;"><?= $error ?></p>
   			<div class="container">
-    			<label><b>Username</b></label>
+    			<label class="w3-text-blue-gray"><b>Username</b></label>
     			<input type="text" placeholder="Username" name="user_name" required>
 
-    			<label><b>Password</b></label>
+    			<label class="w3-text-blue-gray" ><b>Password</b></label>
     			<input type="password" placeholder="Password" name="password" required>
 
-    			<button onclick="location.href='sipnup.html'" type="button">Signup</button>
-    			<button type="submit">Login</button>
+    			<button class="w3-text-blue-gray" onclick="location.href='signup.php'" type="button">Signup</button>
+                <button class="w3-text-blue-gray" onclick="location.href='forgot.php'" type="button">Forgot Password</button>
+    			<button class="w3-text-blue-gray" type="submit">Login</button>
   			</div>
 		</form>
 	</body>

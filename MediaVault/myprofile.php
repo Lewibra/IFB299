@@ -1,4 +1,5 @@
 <?php
+<<<<<<< HEAD
 
  	include "session.php";
     if ($_SESSION['location'] == ""){
@@ -8,15 +9,31 @@
     $result = mysql_query("SELECT * FROM user_id ");
     
     while($row = mysql_fetch_assoc($result)){
+=======
+    include "session.php";
+    if ($_SESSION['location'] == ""){
+        $_SESSION['location'] = $_SESSION["login_user"];
+    }
+
+	$sql = "SELECT * FROM user_id WHERE user_name = '" . $_SESSION["login_user"]."'";
+    $result = $db->query($sql);
+    while($row = $result->fetch_assoc()){
+>>>>>>> master
 ?>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<<<<<<< HEAD
 
 	<title></title>
 	<script type="text/javascript" src="scripts.js"></script>
+=======
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+	<title></title>
+	<script type="text/javascript" src="js/scripts.js"></script>
+>>>>>>> master
 	<link type="text/css" rel="stylesheet" href="CSS/style.css" />
 </head>
 <body>
@@ -42,7 +59,11 @@
 			?>
           </td>
           <td data-title="Edit">
+<<<<<<< HEAD
             <a href="#" onclick="update_email()" target="_blank">Edit</a>
+=======
+            <a href="javascript:void(0);" onclick="update_email()">Edit</a>
+>>>>>>> master
           </td>
         </tr>
         <tr>
@@ -53,7 +74,11 @@
 			?>
           </td>
           <td data-title="Edit">
+<<<<<<< HEAD
             <a href="#" onclick="update_firstName()" target="_blank">Edit</a>
+=======
+            <a href="javascript:void(0);" onclick="update_firstName()">Edit</a>
+>>>>>>> master
           </td>
         </tr>
         <tr>
@@ -61,20 +86,34 @@
           <td id="lastName" data-title="">
           	<?php
 					echo $row['last_name'];
+<<<<<<< HEAD
 			?>
           </td>
           <td data-title="Edit">
             <a href="#" onclick="update_lastName()" target="_blank">Edit</a>
+=======
+    					}
+			?>
+          </td>
+          <td data-title="Edit">
+            <a href="javascript:void(0);" onclick="update_lastName()">Edit</a>
+>>>>>>> master
           </td>
         </tr>
         <tr>
            <td data-title="">
+<<<<<<< HEAD
             <a href="#" onclick="change_password()" target="_blank">Change Password</a>
           </td>
         </tr>
         <?php 
         	} 
         ?>
+=======
+            <a href="javascript:void(0);" onclick="change_password()">Change Password</a>
+          </td>
+        </tr>
+>>>>>>> master
       </tbody>
     </table>
   </div>

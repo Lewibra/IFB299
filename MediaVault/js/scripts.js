@@ -156,6 +156,10 @@ function load_files(response, sortByName, sortByMetaData, SortByDate){
                 a.appendChild(linkText);
                 a.title = " Open | ";
                 a.href = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
+                if (jsonObject[i]["file_type"] == "epub"){
+                    var path = "./mediavault_files/users/" + jsonObject[i]["file_location"] + "/" + jsonObject[i]["file_name"];
+                    a.href = "./reader.php" + "?file=" + path;
+                }
                 a.target = "_blank";
 
                 var download = document.createElement('a');

@@ -28,7 +28,7 @@
             <state relative-caret-position="15">
               <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
               <folding>
-                <marker date="1496806229000" expanded="true" signature="161:334" ph="UPDATE file_... " />
+                <marker date="1496804344000" expanded="true" signature="161:334" ph="UPDATE file_... " />
               </folding>
             </state>
           </provider>
@@ -108,8 +108,8 @@
             <state relative-caret-position="150">
               <caret line="10" column="32" lean-forward="false" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
               <folding>
-                <marker date="1496806229000" expanded="true" signature="707:1022" ph="INSERT INTO `Media_Vault_Schema`.`file_details`... " />
-                <marker date="1496806229000" expanded="true" signature="1014:1022" ph="INSERT INTO `Media_Vault_Schema`.`file_details`... " />
+                <marker date="1496803967000" expanded="true" signature="707:1022" ph="INSERT INTO `Media_Vault_Schema`.`file_details`... " />
+                <marker date="1496803967000" expanded="true" signature="1014:1022" ph="INSERT INTO `Media_Vault_Schema`.`file_details`... " />
               </folding>
             </state>
           </provider>
@@ -474,12 +474,12 @@
       <workItem from="1496798397600" duration="1744000" />
       <workItem from="1496800307127" duration="1397000" />
       <workItem from="1496802951018" duration="1149000" />
-      <workItem from="1496806036570" duration="261000" />
+      <workItem from="1496806036570" duration="14000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="106762000" />
+    <option name="totallyTimeSpent" value="106515000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -879,8 +879,8 @@
         <state relative-caret-position="150">
           <caret line="10" column="32" lean-forward="false" selection-start-line="10" selection-start-column="32" selection-end-line="10" selection-end-column="32" />
           <folding>
-            <marker date="1496806229000" expanded="true" signature="707:1022" ph="INSERT INTO `Media_Vault_Schema`.`file_details`... " />
-            <marker date="1496806229000" expanded="true" signature="1014:1022" ph="INSERT INTO `Media_Vault_Schema`.`file_details`... " />
+            <marker date="1496803967000" expanded="true" signature="707:1022" ph="INSERT INTO `Media_Vault_Schema`.`file_details`... " />
+            <marker date="1496803967000" expanded="true" signature="1014:1022" ph="INSERT INTO `Media_Vault_Schema`.`file_details`... " />
           </folding>
         </state>
       </provider>
@@ -906,7 +906,7 @@
         <state relative-caret-position="15">
           <caret line="1" column="13" lean-forward="false" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
           <folding>
-            <marker date="1496806229000" expanded="true" signature="161:334" ph="UPDATE file_... " />
+            <marker date="1496804344000" expanded="true" signature="161:334" ph="UPDATE file_... " />
           </folding>
         </state>
       </provider>

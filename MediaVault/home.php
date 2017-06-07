@@ -56,8 +56,6 @@
 
                 <span class="w3-margin-right w3-text-blue-gray">Sort By:</span>
                 <button href="javascript:void(0);" onclick="sort_name()" class="w3-button w3-white w3-text-blue-gray"><i class="fa fa-file w3-margin-right"></i>Name</button>
-                <button class="w3-button w3-white w3-hide-small w3-text-blue-gray"><i class="fa fa-file w3-margin-right"></i>Description</button>
-                <button class="w3-button w3-white w3-hide-smal w3-text-blue-gray"><i class="fa fa-file w3-margin-right"></i>Date</button>
 
                 <span class="w3-margin-right w3-margin-left w3-text-blue-gray">Search:</span>
 

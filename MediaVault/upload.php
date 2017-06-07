@@ -2,13 +2,18 @@
 require "variables.php";
 session_start();
 if(!empty($_FILES)){
-    $conn = new mysqli($servername, $username, $password, $dbname);
+    $dbHost = 'localhost:8889';
+    $dbUsername = 'root';
+    $dbPassword = 'root';
+    $dbName = 'Media_Vault_Schema';
 
-    if($conn->connect_errno){
-        die("Connection failed: " . $conn->connect_error);
+    //connect with the database
+    $conn = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+    if($mysqli->connect_errno){
+        echo "Failed to connect to MySQL: (" . $mysqli->connect_errno . ") " . $mysqli->connect_error;
     }
  
- 	$userName = $username;
+ 	$userName = $dbUsername;
     $targetDir = "./mediavault_files/users/" . $_SESSION['location'];
     $fileName = $_FILES['file']['name'];
     $targetFile = $targetDir . "/" .$fileName;

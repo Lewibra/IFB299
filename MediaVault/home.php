@@ -3,7 +3,6 @@
     if ($_SESSION['location'] == ""){
         $_SESSION['location'] = $_SESSION["login_user"];
     }
-    $userNameDetails = $_SESSION["login_user"];
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -30,7 +29,7 @@
         </a>
         <img src="Images/icons/MediaVaultlogo2.png" style="width:55%;" class="w3-round"><br><br>
         <h4 class="w3-text-blue-gray"><b>MediaVault</b></h4>
-        <p id = "nameOfUser" class="w3-text-grey"> <?php echo $userNameDetails; ?> </p>
+        <p class="w3-text-grey">Lewis Tracy</p>
     </div>
     <div class="w3-bar-block">
         <a href="javascript:void(0);" onclick="after_load_ajaxFunction('',true)"  class="w3-bar-item w3-button w3-padding"><i class="fa fa-th-large fa-fw w3-margin-right w3-text-blue-gray"></i>MY FILES</a>
@@ -89,7 +88,6 @@
 
 <script type="text/javascript" src="js/scripts.js"></script>
 <script>
-
 
     var myvar = <?php echo json_encode($_SESSION['location']); ?>;
     open_folder(myvar);

@@ -2,7 +2,7 @@
 $servername = "localhost:8889";
 $username = "root";
 $password = "root";
-$dbname = "media_vault_schema";
+$dbname = "Media_Vault_Schema";
 
 function rrmdir($dir) {
     foreach(glob($dir . '/*') as $file) {

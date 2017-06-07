@@ -1,5 +1,6 @@
 <?php
-    include "session.php";
+    include "config.php";
+ 	include "session.php";
     if ($_SESSION['location'] == ""){
         $_SESSION['location'] = $_SESSION["login_user"];
     }
@@ -13,7 +14,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+
 	<title></title>
 	<script type="text/javascript" src="js/scripts.js"></script>
 	<link type="text/css" rel="stylesheet" href="CSS/style.css" />
@@ -41,7 +42,7 @@
 			?>
           </td>
           <td data-title="Edit">
-            <a href="javascript:void(0);" onclick="update_email()">Edit</a>
+            <a href="#" onclick="update_email()" target="_blank">Edit</a>
           </td>
         </tr>
         <tr>
@@ -52,7 +53,7 @@
 			?>
           </td>
           <td data-title="Edit">
-            <a href="javascript:void(0);" onclick="update_firstName()">Edit</a>
+            <a href="#" onclick="update_firstName()" target="_blank">Edit</a>
           </td>
         </tr>
         <tr>
@@ -64,12 +65,12 @@
 			?>
           </td>
           <td data-title="Edit">
-            <a href="javascript:void(0);" onclick="update_lastName()">Edit</a>
+            <a href="#" onclick="update_lastName()" target="_blank">Edit</a>
           </td>
         </tr>
         <tr>
            <td data-title="">
-            <a href="javascript:void(0);" onclick="change_password()">Change Password</a>
+            <a href="#" onclick="change_password()" target="_blank">Change Password</a>
           </td>
         </tr>
       </tbody>

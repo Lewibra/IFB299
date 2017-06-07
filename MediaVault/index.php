@@ -20,9 +20,6 @@
     
       if($count == 1) {
          $_SESSION['login_user'] = $myusername;
-          if (!file_exists('./mediavault_files/users/'.$myusername)) {
-              mkdir('./mediavault_files/users/'.$myusername, 0777, true);
-          }
          header("location:home.php", true, 301);
       }else {
          $error = "Your Login Name or Password is invalid";

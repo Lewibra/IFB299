@@ -1,15 +1,16 @@
 <?php
-require "config.php";
+require "variables.php";
 session_start();
-if($_GET['action'] == 'asldnfjanefkjanwekjfbakwefawefajkwbefkjabwe') {
-    //Register the new folder into the SQL database
-    $sql = "UPDATE `user_id` 
-                SET `password` = '".$_GET['asdfasdfasdfasdf']."'
-                WHERE user_name = '" . $_SESSION["login_user"]."'";
+session_id($_GET['sess']);
+header("Content-Type: application/json", true);
+if($_POST['action'] == 'call_this') {
+        //Register the new folder into the SQL database
+        $sql = "INSERT INTO 'user_id' WHERE user_name = '" . $_SESSION["login_user"]."' ('password')
+                VALUES ('pass')";
 
-    if ($conn->query($sql) === FALSE) {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        if ($conn->query($sql) === FALSE) {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+        $conn->close();
     }
-    $conn->close();
 }
-
